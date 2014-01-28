@@ -1,4 +1,7 @@
 sumeru.packages(
-'itworks.js'
+'itworks.js',
+'undercover.js',
+'undercover_setting.js',
+'fanpai.js',
 )
 

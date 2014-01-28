@@ -6,7 +6,7 @@ if(sumeru.BAE_VERSION){
     password: 'nERdAvmTE2phT3pd8eA4Wjzd9lrvH8O8',//bae 3.0 required
   }); 
   sumeru.config({
-    site_url : 'century.duapp.com', //with tailing slash
+    site_url : 'http://century.duapp.com/', //with tailing slash
   });
   sumeru.config.cluster({
       enable : false,
