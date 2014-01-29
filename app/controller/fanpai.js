@@ -14,11 +14,21 @@ App.fanpai = sumeru.controller.create(function(env, session){
 		doRender("fanpai", ['push','left']);
 	};
 
+
+     
+
+    // onload is respond for handle all data subscription
+    // env.onload = function(){            
+    //     return [getMsgs];            
+    // };
+
+
 	var wordstrings=[];
 	var fathercount=4;
 	var soncount=1;
 	var nowindex=1;
 	var shownumb=true;
+	var sonword="";
 
 	env.onready=function(){
 		fathercount=session.get("fathercount");
@@ -30,12 +40,23 @@ App.fanpai = sumeru.controller.create(function(env, session){
 		document.getElementById('nextbtn').addEventListener('click', showword);
 		showword();
 	}
+
+	var restart=function(){
+		wordstrings=getWord(fathercount,soncount);
+		console.log("restart");
+		nowindex=1;
+		shownumb=true;
+		$("#wordtext").html("1");
+		$("#wordtext").show();
+		// showword();
+	}
 	
 	var showword=function(){
 		if(nowindex>fathercount)
 		{
 			$("#wordtext").hide();
-			 env.redirect('/guess');
+			 env.redirect('/guess',{'content':wordstrings,'fathercount':fathercount,'soncount':soncount,'sonword':sonword});
+			 restart();
 		}
 		else{
 			$("#wordtext").show();
@@ -76,6 +97,7 @@ App.fanpai = sumeru.controller.create(function(env, session){
 		var tem=selectword.split('_');
 		var fatherindex = parseInt(Math.random());
 		var sonindex=Math.abs(fatherindex-1);
+		sonword=tem[sonindex];
 		var retrunarr=new Array(10);
 		for (var i = fathercount-1; i >= 0; i--) {
 			retrunarr[i]=tem[fatherindex];	

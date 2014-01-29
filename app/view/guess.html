@@ -1,8 +1,17 @@
 <div class="container">
 <h1>猜卧底</h1>
+<div id="guesscontent">
 
-<div id="">
-<p id="wordtext" style="font-size: 60pt">1</p>
 </div>
-<button type="button" id="nextbtn" class="btn btn-primary btn-lg btn-block" >查看词条</button>
+<button type="button" id="restart" class="btn btn-primary btn-lg btn-block" >重新开始</button>
+
+<block tpl-id="message-hall">
+            {{#each data}}
+            {{this.content}}
+            {{/each}}        
+</block>
+
+
+
 </div>
+
