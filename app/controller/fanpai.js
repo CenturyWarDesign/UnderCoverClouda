@@ -28,26 +28,28 @@ App.fanpai = sumeru.controller.create(function(env, session){
 		wordstrings=getWord(fathercount,soncount);
 		console.log("restart");
 		document.getElementById('nextbtn').addEventListener('click', showword);
-		$("#wanbin").hide();
+		showword();
 	}
 	
 	var showword=function(){
 		if(nowindex>fathercount)
 		{
-			$("#wanbin").hide();
+			$("#wordtext").hide();
 			 env.redirect('/guess');
 		}
 		else{
-			$("#wanbin").show();
+			$("#wordtext").show();
 		}
 		if(!shownumb)
 		{
-			$("#wanbin").html(wordstrings[nowindex-1]);
+			$("#wordtext").html(wordstrings[nowindex-1]);
+			$("#nextbtn").html("记住了，传给下一位");
 			console.log("showit"+wordstrings[nowindex-1]);
 			nowindex++;
 		}
 		else{
-			$("#wanbin").html(nowindex);
+			$("#wordtext").html(nowindex);
+			$("#nextbtn").html("点击查看词条");
 			console.log("showit"+nowindex);
 		}
 		// document.getElementById('nextbtn').addEventListener('click', hideword);
