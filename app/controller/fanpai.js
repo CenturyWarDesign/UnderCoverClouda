@@ -13,32 +13,42 @@ App.fanpai = sumeru.controller.create(function(env, session){
 	env.onrender = function(doRender){
 		doRender("fanpai", ['push','left']);
 	};
+
 	var wordstrings=[];
-	var fathercount=3;
+	var fathercount=4;
 	var soncount=1;
-	env.onready=function(){
-		wordstrings=getWord(fathercount,soncount);
-		document.getElementById('nextbtn').addEventListener('click', showword);
-	}
-
-
-
 	var nowindex=1;
-	var shownumb=false;
+	var shownumb=true;
+
+	env.onready=function(){
+		fathercount=session.get("fathercount");
+		soncount=session.get("soncount");
+		// fathercount=10; 
+		// soncount=2;
+		wordstrings=getWord(fathercount,soncount);
+		console.log("restart");
+		document.getElementById('nextbtn').addEventListener('click', showword);
+		$("#wanbin").hide();
+	}
+	
 	var showword=function(){
 		if(nowindex>fathercount)
 		{
 			$("#wanbin").hide();
 			 env.redirect('/guess');
 		}
-
+		else{
+			$("#wanbin").show();
+		}
 		if(!shownumb)
 		{
 			$("#wanbin").html(wordstrings[nowindex-1]);
+			console.log("showit"+wordstrings[nowindex-1]);
 			nowindex++;
 		}
 		else{
 			$("#wanbin").html(nowindex);
+			console.log("showit"+nowindex);
 		}
 		// document.getElementById('nextbtn').addEventListener('click', hideword);
 		shownumb=!shownumb;
@@ -83,8 +93,6 @@ App.fanpai = sumeru.controller.create(function(env, session){
 		};
 
 		return retrunarr;
-
-
 	}
 
 });

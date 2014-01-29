@@ -1,5 +1,5 @@
 CACHE MANIFEST 
-#version:1390965252720
+#version:1390973763134
 CACHE:
 sumeru.css
 sumeru.js
@@ -25,6 +25,7 @@ app.js
 /view/dist/js/bootstrap.js
 /view/dist/js/bootstrap.min.js
 /view/fanpai.html
+/view/guess.html
 /view/img/.DS_Store
 /view/img/index_photo.png
 /view/itworks.html
