@@ -12,7 +12,10 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 		doRender("undercover_setting", ['push','left']);
 	};
 
-
+	env.onready=function(){
+		
+		// document.getElementById('start_undercover').addEventListener('click', startgame);
+	}
 
 
 });

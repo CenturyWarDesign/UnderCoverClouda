@@ -13,10 +13,37 @@ App.fanpai = sumeru.controller.create(function(env, session){
 	env.onrender = function(doRender){
 		doRender("fanpai", ['push','left']);
 	};
+	var wordstrings=[];
+	var fathercount=3;
+	var soncount=1;
 	env.onready=function(){
-		$("#wanbin").html(getWord(10,3).toString());
-		// var wordsarr=getWord(10,1);
+		wordstrings=getWord(fathercount,soncount);
+		document.getElementById('nextbtn').addEventListener('click', showword);
 	}
+
+
+
+	var nowindex=1;
+	var shownumb=false;
+	var showword=function(){
+		if(nowindex>fathercount)
+		{
+			$("#wanbin").hide();
+			 env.redirect('/guess');
+		}
+
+		if(!shownumb)
+		{
+			$("#wanbin").html(wordstrings[nowindex-1]);
+			nowindex++;
+		}
+		else{
+			$("#wanbin").html(nowindex);
+		}
+		// document.getElementById('nextbtn').addEventListener('click', hideword);
+		shownumb=!shownumb;
+	}
+
 
 
 
@@ -38,10 +65,8 @@ App.fanpai = sumeru.controller.create(function(env, session){
 		var fatherindex = parseInt(Math.random());
 		var sonindex=Math.abs(fatherindex-1);
 		var retrunarr=new Array(10);
-		var setarr=new Array(10);
 		for (var i = fathercount-1; i >= 0; i--) {
 			retrunarr[i]=tem[fatherindex];	
-			setarr[i]=i;	
 		};
 
 		for (var i = soncount-1; i >= 0; i--) {

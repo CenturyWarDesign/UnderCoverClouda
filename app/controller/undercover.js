@@ -13,6 +13,13 @@ App.undercover = sumeru.controller.create(function(env, session){
 	};
 
 
+	env.onready=function(){
+		document.getElementById('start_undercover').addEventListener('click', startgame);
+	}
+
+	var startgame=function(){
+		env.redirect('/undercover_setting');
+	}
 
 
 });
