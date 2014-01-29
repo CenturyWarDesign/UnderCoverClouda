@@ -14,69 +14,26 @@ App.guess = sumeru.controller.create(function(env, session){
 
 	env.onrender = function(doRender){
 		doRender("guess", ['push','left']);
+		// initConfig();
 	};
 	var wordstring=[];
-	
 	var fathercount=4;
 	var soncount=1;
 	var sonword="";
 
 	env.onready=function(){
-		wordstring=session.get("content").split(",");
 		initGuess();
-		fathercount=session.get("fathercount");
-		soncount=session.get("soncount");
-		sonword=session.get("sonword");
 		document.getElementById('restart').addEventListener('click', restart);
-		getMsgs();
 	}	
 
-
-
-	 var getMsgs = function(){       
-        session.undercoverword= env.subscribe('pub-undercover', function(msgCollection){
-        	// console.log("callback-:"+msgCollection.find().toString());
-            // manipulate synced collection and bind it to serveral view blocks.
-            session.bind('message-hall', {
-                data    :   msgCollection.find()
-            });
-        });
-    };      
-    //onload is respond for handle all data subscription
-    env.onload = function(){            
-        return [getMsgs];            
-    };
-
-	// var getMsgs = function(env){       
-	// 	console.log('get msgs.......'); 
- //        session.undercoverword = env.subscribe('pub-undercover', function(msgCollection){
- //        	console.log(msgCollection);
- //        });
- //    }; 
-
-	
-	// env.onload = function(){            
- //            return getMsgs();            
- //    };
-
-	// env.onload=function(){
-		// console.log("onload");
-	// 	wordstring=session.get("content").split(",");
-	// 	initGuess();
-	// 	fathercount=session.get("fathercount");
-	// 	soncount=session.get("soncount");
-	// 	sonword=session.get("sonword");
-	// }
-
-
 	var restart=function(){
-		// tapindex();
 		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':soncount});
-		// initGuess();
+		initGuess();
 	}
 
 
 	var initGuess=function(){
+		initConfig();
 		$("#guesscontent").html("");
 		for (var i = 1; i <=wordstring.length; i++) {
 			if((i-1)%4==0)
@@ -89,7 +46,16 @@ App.guess = sumeru.controller.create(function(env, session){
 		};
 	}
 
+	var initConfig=function(){
+		// console.log("undercoverword"+session.get("content");
+		wordstring=session.get("content").split(",");
+		fathercount=wordstring.length;
+		soncount=parseInt(session.get("soncount"));
+		sonword=session.get("sonword");
+	}
+
 	var tapindex=function(){
+		initConfig();
 		var index=this.id.split('_')[1];
 		$("#under_"+index).attr("disabled", "disabled");
 		if(wordstring[index-1]!=sonword)
@@ -98,19 +64,5 @@ App.guess = sumeru.controller.create(function(env, session){
 		}else{
 			$("#under_"+index).html("卧底"+wordstring[index-1]);
 		}
-		// $("#under_"+index).html(wordstring[index]);
-		console.log(this.id);
-
-
-		session.undercoverword.destroy({'sessionid':'wanbin'});
-		session.undercoverword.add({
-           fathercount :10,
-           content :"wanibn"+index,
-           sonword :"w",
-           sessionid:'wanbin'
-        });
-        session.undercoverword.save();
 	}
-
-
 });

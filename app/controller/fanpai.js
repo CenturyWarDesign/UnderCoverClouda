@@ -29,6 +29,7 @@ App.fanpai = sumeru.controller.create(function(env, session){
 	var nowindex=1;
 	var shownumb=true;
 	var sonword="";
+	var guess=false;
 
 	env.onready=function(){
 		fathercount=session.get("fathercount");
@@ -45,18 +46,25 @@ App.fanpai = sumeru.controller.create(function(env, session){
 		wordstrings=getWord(fathercount,soncount);
 		console.log("restart");
 		nowindex=1;
-		shownumb=true;
+		shownumb=false;
 		$("#wordtext").html("1");
-		$("#wordtext").show();
+		$("#wordtext").hide();
 		// showword();
 	}
 	
 	var showword=function(){
+		if(guess==true)
+		{
+			guess=false;
+			restart();
+		}
+
 		if(nowindex>fathercount)
 		{
-			$("#wordtext").hide();
-			 env.redirect('/guess',{'content':wordstrings,'fathercount':fathercount,'soncount':soncount,'sonword':sonword});
-			 restart();
+			env.redirect('/guess',{'content':wordstrings,'fathercount':fathercount,'soncount':soncount,'sonword':sonword});
+			$("#wordtext").html("1");
+			guess=true;
+			return;
 		}
 		else{
 			$("#wordtext").show();
@@ -77,9 +85,6 @@ App.fanpai = sumeru.controller.create(function(env, session){
 		shownumb=!shownumb;
 	}
 
-
-
-
 	var getWord=function(fathercount,soncount){
 		var words=[
 		'台灯_电灯',
@@ -98,7 +103,7 @@ App.fanpai = sumeru.controller.create(function(env, session){
 		var fatherindex = parseInt(Math.random());
 		var sonindex=Math.abs(fatherindex-1);
 		sonword=tem[sonindex];
-		var retrunarr=new Array(10);
+		var retrunarr=new Array(fathercount);
 		for (var i = fathercount-1; i >= 0; i--) {
 			retrunarr[i]=tem[fatherindex];	
 		};
@@ -115,7 +120,10 @@ App.fanpai = sumeru.controller.create(function(env, session){
 		for (var i = fathercount-1; i >= 0; i--) {
 			console.log(retrunarr[i]+i);
 		};
-
+		// session.set("undercoverword",retrunarr.toString());
+		// session.set("sonword",tem[sonindex]);
+		// session.set("soncount",soncount);
+		// session.commit();
 		return retrunarr;
 	}
 
