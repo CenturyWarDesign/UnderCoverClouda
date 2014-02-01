@@ -4,6 +4,6 @@ sumeru.packages(
 'undercover_setting.js',
 'fanpai.js',
 'guess.js'
-,'../view/dist/css/bootstrap.min.css'
+// ,'../view/dist/css/bootstrap.min.css'
 )
 
