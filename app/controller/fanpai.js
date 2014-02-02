@@ -61,7 +61,7 @@ App.fanpai = sumeru.controller.create(function(env, session){
 
 		if(nowindex>fathercount)
 		{
-			env.redirect('/guess',{'content':wordstrings,'fathercount':fathercount,'soncount':soncount,'sonword':sonword});
+			env.redirect('/guess',{'content':wordstrings,'fathercount':fathercount,'soncount':soncount,'sonword':sonword},true);
 			$("#wordtext").html("1");
 			guess=true;
 			return;

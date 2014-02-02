@@ -27,7 +27,7 @@ App.guess = sumeru.controller.create(function(env, session){
 	}	
 
 	var restart=function(){
-		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':soncount});
+		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':soncount},true);
 		initGuess();
 	}
 

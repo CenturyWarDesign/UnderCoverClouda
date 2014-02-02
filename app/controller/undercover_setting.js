@@ -81,7 +81,7 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 	var underword=function(){
 		var fathercount=parseInt($("#father_count").val());
 		var soncount=parseInt($("#son_count").val());
-		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':soncount});
+		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':soncount},true);
 	}
 
 });

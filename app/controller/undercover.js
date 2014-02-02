@@ -7,6 +7,8 @@ sumeru.router.add(
 
 );
 sumeru.router.setDefault('App.undercover');
+
+
 App.undercover = sumeru.controller.create(function(env, session){
 	env.onrender = function(doRender){
 		doRender("undercover", ['push','left']);
@@ -18,7 +20,7 @@ App.undercover = sumeru.controller.create(function(env, session){
 	}
 
 	var startgame=function(){
-		env.redirect('/undercover_setting');
+		env.redirect('/undercover_setting',{},true);
 	}
 
 
