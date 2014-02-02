@@ -15,22 +15,25 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 	var soncount=1;
 
 	env.onready=function(){
-		fathercount=session.get("fathercount");
-		soncount=session.get("soncount");
-		$("#alter").hide();
+		if(parseInt(session.get("fathercount"))>0)
+			fathercount=session.get("fathercount");
+		if(parseInt(session.get("soncount"))>0)
+			soncount=session.get("soncount");
+		
 		document.getElementById('start_game').addEventListener('click', underword);
 		document.getElementById('addfather').addEventListener('click', addfather);
 		document.getElementById('costfather').addEventListener('click', costfather);
 		document.getElementById('addson').addEventListener('click', addson);
 		document.getElementById('costson').addEventListener('click', costson);
+
 		$("#father_count").val(fathercount+"");
 		$("#son_count").val(soncount+"");
+		$("#alter").hide();
 	}
 
-       var addfather=function(){
+     var addfather=function(){
 		$("#alter").hide();
 		var fathercount=parseInt($("#father_count").val());
-		$("#alter").hide();
 			if(fathercount>=12)
 		{
 			$("#alter").html("参与人数过多（4-12）");

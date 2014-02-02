@@ -19,12 +19,14 @@ App.guess = sumeru.controller.create(function(env, session){
 	var wordstring=[];
 	var fathercount=4;
 	var soncount=1;
+	var peoplecount=fathercount-soncount;
 	var sonword="";
 
 	env.onready=function(){
 		initGuess();
 		document.getElementById('restart').addEventListener('click', restart);
 		document.getElementById('setting_game').addEventListener('click', underwordsetting);
+		$("#alter").hide();
 	}	
 
 	var restart=function(){
@@ -44,7 +46,7 @@ App.guess = sumeru.controller.create(function(env, session){
 			{
 				$("#guesscontent").append('<br/>');
 			}
-			var temhtml="<button id='under_"+i+"'  type='button'class='btn btn-default' style='width:20%;padding:5px;margin:5px;' onclick=''>"+i+"</button>"
+			var temhtml="<button id='under_"+i+"'  type='button'class='btn btn-default' style='width:23%;padding:1%;margin:1%;' onclick=''>"+i+"</button>"
 			$("#guesscontent").append(temhtml);
 			document.getElementById('under_'+i).addEventListener('click', tapindex);
 		};
@@ -56,17 +58,46 @@ App.guess = sumeru.controller.create(function(env, session){
 		fathercount=wordstring.length;
 		soncount=parseInt(session.get("soncount"));
 		sonword=session.get("sonword");
+		peoplecount=fathercount-soncount;
+		console.log(peoplecount+":peoplecount");
 	}
 
 	var tapindex=function(){
-		initConfig();
+		// initConfig();
 		var index=this.id.split('_')[1];
 		$("#under_"+index).attr("disabled", "disabled");
 		if(wordstring[index-1]!=sonword)
 		{
+			peoplecount--;
 			$("#under_"+index).html("冤死"+wordstring[index-1]);
 		}else{
+			soncount--;
 			$("#under_"+index).html("卧底"+wordstring[index-1]);
 		}
+
+
+		console.log(peoplecount+":peoplecount");
+		console.log(soncount+":soncount");
+
+		if(peoplecount<=soncount){
+			$("#alter").html("卧底胜利");
+			$("#alter").show();
+			disableallbutton();
+		}
+		else if(soncount<=0){
+			$("#alter").html("卧底失败");
+			$("#alter").show();
+			disableallbutton();
+		}
+	}
+	var disableallbutton=function(){
+		// console.log(+":disable");
+		for (var i=0;i<fathercount;i++)
+		{
+			var index=i+1;
+			$("#under_"+index).attr("disabled", "disabled");
+			$("#under_"+index).html(index+"号身份:"+wordstring[index-1]);
+			console.log(index+":disable");
+		}	
 	}
 });
