@@ -26,6 +26,7 @@ App.guess = sumeru.controller.create(function(env, session){
 		initGuess();
 		document.getElementById('restart').addEventListener('click', restart);
 		document.getElementById('setting_game').addEventListener('click', underwordsetting);
+		document.getElementById('punish').addEventListener('click', punish);
 		$("#alter").hide();
 	}	
 
@@ -36,6 +37,10 @@ App.guess = sumeru.controller.create(function(env, session){
 
 	var underwordsetting=function(){
 		env.redirect('/undercover_setting',{'fathercount':fathercount,'soncount':soncount},true);
+	}
+
+	var punish=function(){
+		env.redirect('/punish',{},true);
 	}
 
 	var initGuess=function(){
