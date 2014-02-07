@@ -27,7 +27,7 @@ App.guess = sumeru.controller.create(function(env, session){
 		document.getElementById('restart').addEventListener('click', restart);
 		document.getElementById('setting_game').addEventListener('click', underwordsetting);
 		// document.getElementById('punish').addEventListener('click', punish);
-		$("#alter").hide();
+		$("#alter_guess").hide();
 	}	
 
 	var restart=function(){
@@ -87,13 +87,13 @@ App.guess = sumeru.controller.create(function(env, session){
 		console.log(soncount+":soncount");
 
 		if(peoplecount<=soncount){
-			$("#alter").html("卧底胜利");
-			$("#alter").show();
+			$("#alter_guess").html("卧底胜利");
+			$("#alter_guess").show();
 			disableallbutton();
 		}
 		else if(soncount<=0){
-			$("#alter").html("卧底失败");
-			$("#alter").show();
+			$("#alter_guess").html("卧底失败");
+			$("#alter_guess").show();
 			disableallbutton();
 		}
 	}
