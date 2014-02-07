@@ -51,7 +51,7 @@ App.guess = sumeru.controller.create(function(env, session){
 			{
 				$("#guesscontent").append('<br/>');
 			}
-			var temhtml="<button id='under_"+i+"'  type='button'class='btn btn-default' style='width:30%;padding:1%;margin:1%;' onclick=''>"+i+"</button>"
+			 var temhtml="<button id='under_"+i+"'  type='button'class='btn btn-default' style='width:31%;margin:1%;padding:15px' onclick=''>"+i+"</button>"
 			$("#guesscontent").append(temhtml);
 			document.getElementById('under_'+i).addEventListener('click', tapindex);
 		};
@@ -74,10 +74,12 @@ App.guess = sumeru.controller.create(function(env, session){
 		if(wordstring[index-1]!=sonword)
 		{
 			peoplecount--;
-			$("#under_"+index).html("冤死"+wordstring[index-1]);
+			// $("#under_"+index).html("冤死"+wordstring[index-1]);
+			$("#under_"+index).html("出局");
 		}else{
 			soncount--;
-			$("#under_"+index).html("卧底"+wordstring[index-1]);
+			// $("#under_"+index).html("卧底"+wordstring[index-1]);
+			$("#under_"+index).html("出局");
 		}
 
 
