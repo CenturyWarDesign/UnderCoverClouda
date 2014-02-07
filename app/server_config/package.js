@@ -3,6 +3,7 @@ sumeru.packages(
     'site_url.js',
     'tmp_dir.js',
     'mime.js',
-    'bae.js'
+    'bae.js',
+    'config.js'
 );
  

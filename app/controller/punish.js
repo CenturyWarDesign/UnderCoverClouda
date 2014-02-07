@@ -11,6 +11,7 @@ sumeru.router.add(
 
 App.punish = sumeru.controller.create(function(env, session){
 	var swipcount=0;
+	var punish_url="127.0.0.1";
 	env.onrender = function(doRender){
 		doRender("punish", ['push','left']);
 	};
@@ -30,7 +31,8 @@ App.punish = sumeru.controller.create(function(env, session){
 	var reflashword=function(){
 		console.log("starttap");
 		swipcount++;
-		$("#punishword").html("向下滑动第"+swipcount+"次");
+
+		$("#punishword").html("向下滑动第"+swipcount+"次"+sumeru.config.get("config"));
 	}
 
 

@@ -5,6 +5,6 @@ sumeru.packages(
 'fanpai.js',
 'guess.js',
 'punish.js'
-// ,'../view/dist/css/bootstrap.min.css'
+// 'app/asset/dist/css/bootstrap.min.css'
 )
 

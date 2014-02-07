@@ -26,32 +26,32 @@ App.guess = sumeru.controller.create(function(env, session){
 		initGuess();
 		document.getElementById('restart').addEventListener('click', restart);
 		document.getElementById('setting_game').addEventListener('click', underwordsetting);
-		document.getElementById('punish').addEventListener('click', punish);
+		// document.getElementById('punish').addEventListener('click', punish);
 		$("#alter").hide();
 	}	
 
 	var restart=function(){
-		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':soncount},true);
+		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':Math.max(soncount,1)},true);
 		initGuess();
 	}
 
 	var underwordsetting=function(){
-		env.redirect('/undercover_setting',{'fathercount':fathercount,'soncount':soncount},true);
+		env.redirect('/undercover_setting',{'fathercount':fathercount,'soncount':Math.max(1,soncount)},true);
 	}
 
 	var punish=function(){
-		env.redirect('/punish',{},true);
+		// env.redirect('/punish',{},true);
 	}
 
 	var initGuess=function(){
 		initConfig();
 		$("#guesscontent").html("");
 		for (var i = 1; i <=wordstring.length; i++) {
-			if((i-1)%4==0)
+			if((i-1)%3==0)
 			{
 				$("#guesscontent").append('<br/>');
 			}
-			var temhtml="<button id='under_"+i+"'  type='button'class='btn btn-default' style='width:23%;padding:1%;margin:1%;' onclick=''>"+i+"</button>"
+			var temhtml="<button id='under_"+i+"'  type='button'class='btn btn-default' style='width:30%;padding:1%;margin:1%;' onclick=''>"+i+"</button>"
 			$("#guesscontent").append(temhtml);
 			document.getElementById('under_'+i).addEventListener('click', tapindex);
 		};
@@ -101,7 +101,7 @@ App.guess = sumeru.controller.create(function(env, session){
 		{
 			var index=i+1;
 			$("#under_"+index).attr("disabled", "disabled");
-			$("#under_"+index).html(index+"号身份:"+wordstring[index-1]);
+			$("#under_"+index).html(index+"号:"+wordstring[index-1]);
 			console.log(index+":disable");
 		}	
 	}
