@@ -31,9 +31,23 @@ App.punish = sumeru.controller.create(function(env, session){
 	var reflashword=function(){
 		console.log("starttap");
 		swipcount++;
-
-		$("#punishword").html("向下滑动第"+swipcount+"次"+sumeru.config.get("config"));
+		getword();
 	}
+
+	var getword=function(){
+		console.log(sumeru.config.get(""));
+		var url = "http://42.121.123.185/CenturyServer/Entry.php?cmd=PublishRandomOne"; 
+		// url="http://192.168.1.31/Entry.php?cmd=PublishRandomOne";
+		sumeru.external.get(url,getCallback);
+	}
+	
+
+	var getCallback = function(data){ 
+		// console.log(data);
+		var stu = eval('('+data+')');
+		var temdata=eval('('+stu.data+')');
+		$("#punishword").html(temdata[0].content);
+	} 
 
 
 });

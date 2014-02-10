@@ -26,11 +26,12 @@ App.guess = sumeru.controller.create(function(env, session){
 		initGuess();
 		document.getElementById('restart').addEventListener('click', restart);
 		document.getElementById('setting_game').addEventListener('click', underwordsetting);
-		// document.getElementById('punish').addEventListener('click', punish);
+		document.getElementById('punish').addEventListener('click', punish);
 		$("#alter_guess").hide();
 	}	
 
 	var restart=function(){
+		// env.close();
 		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':Math.max(soncount,1)},true);
 		initGuess();
 	}
@@ -40,7 +41,7 @@ App.guess = sumeru.controller.create(function(env, session){
 	}
 
 	var punish=function(){
-		// env.redirect('/punish',{},true);
+		env.redirect('/punish',{},true);
 	}
 
 	var initGuess=function(){
