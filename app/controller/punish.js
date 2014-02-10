@@ -50,9 +50,19 @@ App.punish = sumeru.controller.create(function(env, session){
 		var temdata=eval('('+stu.data+')');
 		try
 		{
+			console.log(temdata[0]);
+			if(temdata[0].type==2)
+			{
+				//真心话
+				$("#punishword").css('color','green');
+			}
+			else if(temdata[0].type==1){
+				$("#punishword").css('color','red');	
+			}
 			$("#punishword").html(temdata[0].content);
 		}
 		catch(err){
+			$("#punishword").css('color','black');
 			$("#punishword").html("可以免除惩罚");
 		}
 		
