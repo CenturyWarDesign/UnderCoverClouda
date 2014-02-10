@@ -20,6 +20,8 @@ App.punish = sumeru.controller.create(function(env, session){
 	env.onready=function(){
 		// document.getElementById('start_undercover').addEventListener('click', startgame);
 		touch.on(document.getElementById('swipa'), 'tap', reflashword );
+		touch.on(document.getElementById('swipa'), 'swipedown', reflashword );
+		touch.on(document.getElementById('swipa'), 'swiperight', reflashword );
 		// touch.trigger("swipa", 'swipedown');
 		console.log("ready");
 	}
@@ -46,7 +48,14 @@ App.punish = sumeru.controller.create(function(env, session){
 		// console.log(data);
 		var stu = eval('('+data+')');
 		var temdata=eval('('+stu.data+')');
-		$("#punishword").html(temdata[0].content);
+		try
+		{
+			$("#punishword").html(temdata[0].content);
+		}
+		catch(err){
+			$("#punishword").html("可以免除惩罚");
+		}
+		
 	} 
 
 
