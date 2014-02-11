@@ -13,7 +13,7 @@ sumeru.router.add(
 App.guess = sumeru.controller.create(function(env, session){
 
 	env.onrender = function(doRender){
-		doRender("guess", ['push','left']);
+		doRender("guess", ['none','z']);
 		// initConfig();
 	};
 	var wordstring=[];
@@ -41,8 +41,10 @@ App.guess = sumeru.controller.create(function(env, session){
 	}
 
 	var punish=function(){
+		// env.callSubController('/punish',{})
 		env.redirect('/punish',{},true);
 	}
+
 
 	var initGuess=function(){
 		initConfig();

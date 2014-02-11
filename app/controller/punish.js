@@ -13,7 +13,7 @@ App.punish = sumeru.controller.create(function(env, session){
 	var swipcount=0;
 	var punish_url="127.0.0.1";
 	env.onrender = function(doRender){
-		doRender("punish", ['push','left']);
+		doRender("punish", ['none','z']);
 	};
 
 
