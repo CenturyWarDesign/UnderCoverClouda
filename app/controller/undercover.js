@@ -6,7 +6,7 @@ sumeru.router.add(
 	}
 
 );
-sumeru.router.setDefault('App.undercover');
+// sumeru.router.setDefault('App.undercover');
 
 
 App.undercover = sumeru.controller.create(function(env, session){
@@ -22,15 +22,12 @@ App.undercover = sumeru.controller.create(function(env, session){
 	}
 
 	var startgame=function(){
-		// var myAuth = sumeru.auth.create(env); 
-		// var userinfo= myAuth.getUserInfo();
-		// console.log(userinfo);
+		var myAuth = sumeru.auth.create(env); 
+		var userinfo= myAuth.getUserInfo();
+		console.log(userinfo);
 		// login();
-		console.log(sumeru.reachability.getStatus());
-		console.log(sumeru.reachability.STATUS_CONNECTED);
-		
 		// 
-		env.redirect('/undercover_setting');
+		// env.redirect('/undercover_setting');		
 	}
 	
 	var statusChangeHandle = function(err,status){ 
