@@ -7,7 +7,7 @@ sumeru.router.add(
 
 );
 
-sumeru.router.setDefault('App.killer_setting');
+// sumeru.router.setDefault('App.killer_setting');
 App.killer_setting = sumeru.controller.create(function(env, session){
 	env.onrender = function(doRender){
 		doRender("setting", ['none','z']);

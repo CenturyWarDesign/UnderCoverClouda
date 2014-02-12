@@ -23,7 +23,17 @@ App.punish = sumeru.controller.create(function(env, session){
 		touch.on(document.getElementById('swipa'), 'swipedown', reflashword );
 		touch.on(document.getElementById('swipa'), 'swiperight', reflashword );
 		// touch.trigger("swipa", 'swipedown');
-		console.log("ready");
+		var type=session.get('type');
+		console.log(type);
+		if(type=='tures')
+		{
+			$("#title").html("真心话大冒险");
+		}
+		else{
+			$("#title").html("愿赌服输");
+		}
+
+		$("#punishword").fadeOut(300).fadeIn(300).fadeOut(300).fadeIn(300);
 	}
 
 	var startgame=function(){
