@@ -7,16 +7,22 @@ sumeru.router.add(
 
 );
 
+sumeru.router.setDefault('App.killer_setting');
 App.killer_setting = sumeru.controller.create(function(env, session){
 	env.onrender = function(doRender){
-		doRender("killer_setting", ['none','z']);
+		doRender("setting", ['none','z']);
 	};
-	var fathercount=4;
+
+	var fathercount=6;
 	var soncount=1;
+
+	var maxpeople=16;
+	var minpeople=6;
 
 	env.onready=function(){
 		if(parseInt(session.get("fathercount"))>0)
-			fathercount=session.get("fathercount");
+			fathercount=Math.max(6,session.get("fathercount")) ;
+
 		if(parseInt(session.get("soncount"))>0)
 			soncount=session.get("soncount");
 		
@@ -31,6 +37,10 @@ App.killer_setting = sumeru.controller.create(function(env, session){
 		$("#son_count").val(soncount+"");
 		$("#alter").hide();
 
+
+		$("#select_undercover").hide();
+		$("#select_undercover_text").hide();
+
 	}
 
 	var rulesgame=function(){
@@ -41,9 +51,9 @@ App.killer_setting = sumeru.controller.create(function(env, session){
      var addfather=function(){
 		$("#alter").hide();
 		var fathercount=parseInt($("#father_count").val());
-			if(fathercount>=12)
+			if(fathercount>=maxpeople)
 		{
-			$("#alter").html("参与人数过多（4-12）");
+			$("#alter").html("参与人数过多（"+minpeople+"-"+maxpeople+"）");
 			$("#alter").show();
 			return;
 		}
@@ -55,9 +65,9 @@ App.killer_setting = sumeru.controller.create(function(env, session){
 		$("#alter").hide();
 		var fathercount=parseInt($("#father_count").val());
 		$("#alter").hide();
-			if(fathercount<=4)
+			if(fathercount<=minpeople)
 		{
-			$("#alter").html("参与人数过少（4-12）");
+			$("#alter").html("参与人数过少（"+minpeople+"-"+maxpeople+"）");
 			$("#alter").show();
 			return;
 		}
@@ -98,7 +108,7 @@ App.killer_setting = sumeru.controller.create(function(env, session){
 		// env.hide();
 		var fathercount=parseInt($("#father_count").val());
 		var soncount=parseInt($("#son_count").val());
-		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':soncount},true);
+		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':soncount,'type':'killer'},true);
 	}
 
 

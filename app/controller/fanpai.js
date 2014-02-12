@@ -20,13 +20,27 @@ App.fanpai = sumeru.controller.create(function(env, session){
 	var shownumb=true;
 	var sonword="";
 	var guess=false;
+	var game_type="undercover";
 
 	env.onready=function(){
-		fathercount=session.get("fathercount");
-		soncount=session.get("soncount");
+		if(parseInt(session.get("fathercount"))>0)
+			fathercount=session.get("fathercount");
+		if(parseInt(session.get("fathercount"))>0)
+			soncount=session.get("soncount");
+
+		//killer 代表杀人游戏  undercover代表谁是卧底
+		game_type=session.get("type");
+
 		// fathercount=10; 
 		// soncount=2;
-		wordstrings=getWord(fathercount,soncount);
+		if(game_type=='killer')
+		{
+			wordstrings=getKiller(fathercount);
+		}
+		else{
+			wordstrings=getWord(fathercount,soncount);
+		}
+		
 		console.log("restart");
 		document.getElementById('nextbtn').addEventListener('click', showword);
 		showword();
@@ -51,9 +65,13 @@ App.fanpai = sumeru.controller.create(function(env, session){
 
 		if(nowindex>fathercount)
 		{
-			env.redirect('/guess',{'content':wordstrings,'fathercount':fathercount,'soncount':soncount,'sonword':sonword},true);
-			$("#wordtext").html("1");
-			guess=true;
+			if(game_type=='killer')
+			{
+				env.redirect('/killer_game',{'content':wordstrings},true);
+			}
+			else{
+				env.redirect('/guess',{'content':wordstrings,'fathercount':fathercount,'soncount':soncount,'sonword':sonword},true);
+			}
 			return;
 		}
 		else{
@@ -74,6 +92,40 @@ App.fanpai = sumeru.controller.create(function(env, session){
 		// document.getElementById('nextbtn').addEventListener('click', hideword);
 		shownumb=!shownumb;
 	}
+
+	var getKiller=function(fathercount){
+		var policecount=parseInt( fathercount/4);
+		var soncount=policecount;
+		var peoplearray=[];
+		for(var i=0;i<fathercount;i++){
+			peoplearray[i]='平民';
+		}
+
+		peoplearray[parseInt(Math.random()*peoplearray.length)]='法官';
+
+		while(policecount>0){
+			var index=parseInt(Math.random()*peoplearray.length);
+			if(peoplearray[index]=='平民')
+			{
+				peoplearray[index]='警察';
+				policecount--;
+			}
+		}
+
+
+		while(soncount>0){
+			var index=parseInt(Math.random()*peoplearray.length);
+			if(peoplearray[index]=='平民')
+			{
+				peoplearray[index]='杀手';
+				soncount--;
+			}
+		}
+		console.log(peoplearray);
+		return peoplearray;
+	}
+
+
 
 	var getWord=function(fathercount,soncount){
 		var words=[

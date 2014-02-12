@@ -66,7 +66,7 @@ App.punish = sumeru.controller.create(function(env, session){
 			$("#punishword").html(temdata[0].content);
 		}
 		catch(err){
-			$("#punishword").css('color','black');
+			$("#punishword").css('color','#996633');
 			$("#punishword").html("可以免除惩罚");
 		}
 		

@@ -7,7 +7,7 @@ sumeru.packages(
 'punish.js',
 'rules.js',
 'killer_setting.js',
-'killer.js'
+'killer_game.js'
 // 'app/asset/dist/css/bootstrap.min.css'
 )
 
