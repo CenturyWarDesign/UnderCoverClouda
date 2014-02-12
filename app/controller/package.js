@@ -4,7 +4,8 @@ sumeru.packages(
 'undercover_setting.js',
 'fanpai.js',
 'guess.js',
-'punish.js'
+'punish.js',
+'rules.js'
 // 'app/asset/dist/css/bootstrap.min.css'
 )
 

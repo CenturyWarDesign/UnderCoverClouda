@@ -21,6 +21,7 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 			soncount=session.get("soncount");
 		
 		document.getElementById('start_game').addEventListener('click', underword);
+		document.getElementById('rules_game').addEventListener('click', rulesgame);
 		document.getElementById('addfather').addEventListener('click', addfather);
 		document.getElementById('costfather').addEventListener('click', costfather);
 		document.getElementById('addson').addEventListener('click', addson);
@@ -31,6 +32,11 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 		$("#alter").hide();
 
 	}
+
+	var rulesgame=function(){
+		env.redirect('/rules');
+	}
+
 
      var addfather=function(){
 		$("#alter").hide();
