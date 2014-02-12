@@ -13,7 +13,7 @@ sumeru.router.add(
 App.guess = sumeru.controller.create(function(env, session){
 
 	env.onrender = function(doRender){
-		doRender("guess", ['push','left']);
+		doRender("guess", ['none','z']);
 		// initConfig();
 	};
 	var wordstring=[];
@@ -28,10 +28,10 @@ App.guess = sumeru.controller.create(function(env, session){
 		document.getElementById('setting_game').addEventListener('click', underwordsetting);
 		document.getElementById('punish').addEventListener('click', punish);
 		$("#alter_guess").hide();
-
 	}	
 
 	var restart=function(){
+		// env.close();
 		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':Math.max(soncount,1)},true);
 		initGuess();
 	}
@@ -41,8 +41,10 @@ App.guess = sumeru.controller.create(function(env, session){
 	}
 
 	var punish=function(){
+		// env.callSubController('/punish',{})
 		env.redirect('/punish',{},true);
 	}
+
 
 	var initGuess=function(){
 		initConfig();
@@ -97,7 +99,6 @@ App.guess = sumeru.controller.create(function(env, session){
 			$("#alter_guess").show();
 			disableallbutton();
 		}
-		$("#showtext").html("卧底人数："+soncount+"平民人数："+peoplecount);
 	}
 	var disableallbutton=function(){
 		// console.log(+":disable");

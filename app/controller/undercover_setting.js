@@ -6,10 +6,10 @@ sumeru.router.add(
 	}
 
 );
-// sumeru.router.setDefault('App.undercover_setting');
+sumeru.router.setDefault('App.undercover_setting');
 App.undercover_setting = sumeru.controller.create(function(env, session){
 	env.onrender = function(doRender){
-		doRender("undercover_setting", ['push','left']);
+		doRender("undercover_setting", ['none','z']);
 	};
 	var fathercount=4;
 	var soncount=1;
@@ -29,6 +29,7 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 		$("#father_count").val(fathercount+"");
 		$("#son_count").val(soncount+"");
 		$("#alter").hide();
+
 	}
 
      var addfather=function(){
@@ -88,6 +89,7 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 	}
 
 	var underword=function(){
+		// env.hide();
 		var fathercount=parseInt($("#father_count").val());
 		var soncount=parseInt($("#son_count").val());
 		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':soncount},true);

@@ -13,47 +13,65 @@ App.punish = sumeru.controller.create(function(env, session){
 	var swipcount=0;
 	var punish_url="127.0.0.1";
 	env.onrender = function(doRender){
-		doRender("punish", ['push','left']);
+		doRender("punish", ['none','z']);
 	};
 
 
 	env.onready=function(){
-		// document.getElementById('start_undercover').addEventListener('click', startgame);
+		document.getElementById('btn_return').addEventListener('click', returnlast);
 		touch.on(document.getElementById('swipa'), 'tap', reflashword );
+		touch.on(document.getElementById('swipa'), 'swipedown', reflashword );
+		touch.on(document.getElementById('swipa'), 'swiperight', reflashword );
 		// touch.trigger("swipa", 'swipedown');
 		console.log("ready");
-		document.getElementById('back').addEventListener('click', back);
 	}
 
 	var startgame=function(){
 		// env.redirect('/undercover_setting',{},true);
 	}
 
+	var returnlast=function(){
+		 history.go(-1);
+	}
+
 	var reflashword=function(){
 		console.log("starttap");
 		swipcount++;
+		getword();
+	}
 
-		$("#punishword").html(getWord());
+	var getword=function(){
+		console.log(sumeru.config.get(""));
+		var url = "http://42.121.123.185/CenturyServer/Entry.php?cmd=PublishRandomOne"; 
+		// url="http://192.168.1.31/Entry.php?cmd=PublishRandomOne";
+		sumeru.external.get(url,getCallback);
 	}
-	var back=function(){
-		self.close();
-	}
-	var getWord=function(){
-		var words=[
-		'台灯_电灯',
-      	'玫瑰_月季',
-		'若曦_晴川',
-		'孟非_乐嘉',
-		'牛奶_豆浆',
-		'保安_保镖',
-		'白菜_生菜',
-		'辣椒_芥末',
-		'金庸_古龙',
-		'赵敏_黄蓉',];
-		var randomword=words[parseInt(Math.random()*words.length)];
-		return randomword;
-	}
+	
+
+	var getCallback = function(data){ 
+		// console.log(data);
+		var stu = eval('('+data+')');
+		var temdata=eval('('+stu.data+')');
+		try
+		{
+			console.log(temdata[0]);
+			if(temdata[0].type==2)
+			{
+				//真心话
+				$("#punishword").css('color','green');
+			}
+			else if(temdata[0].type==1){
+				$("#punishword").css('color','red');	
+			}
+			$("#punishword").html(temdata[0].content);
+		}
+		catch(err){
+			$("#punishword").css('color','black');
+			$("#punishword").html("可以免除惩罚");
+		}
+		
+	} 
+
 
 });
-
 

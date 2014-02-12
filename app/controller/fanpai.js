@@ -10,7 +10,7 @@ sumeru.router.add(
 
 App.fanpai = sumeru.controller.create(function(env, session){
 	env.onrender = function(doRender){
-		doRender("fanpai", ['push','left']);
+		doRender("fanpai", ['none','z']);
 	};
 
 
