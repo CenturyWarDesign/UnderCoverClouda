@@ -28,6 +28,7 @@ App.guess = sumeru.controller.create(function(env, session){
 		document.getElementById('setting_game').addEventListener('click', underwordsetting);
 		document.getElementById('punish').addEventListener('click', punish);
 		$("#alter_guess").hide();
+		// $("#talk_turn").html(Math.floor(Math.random()*10+1))
 	}	
 
 	var restart=function(){
@@ -79,10 +80,12 @@ App.guess = sumeru.controller.create(function(env, session){
 			peoplecount--;
 			// $("#under_"+index).html("冤死"+wordstring[index-1]);
 			$("#under_"+index).html("出局");
+			$("#talk_turn").html("从第"+Math.floor(Math.random()*10+1)+"位开始发言")
 		}else{
 			soncount--;
 			// $("#under_"+index).html("卧底"+wordstring[index-1]);
 			$("#under_"+index).html("出局");
+			$("#talk_turn").html("从第"+Math.floor(Math.random()*10+1)+"位开始发言")
 		}
 
 
@@ -93,11 +96,13 @@ App.guess = sumeru.controller.create(function(env, session){
 			$("#alter_guess").html("卧底胜利");
 			$("#alter_guess").show();
 			disableallbutton();
+			$("#talk_turn").hide();
 		}
 		else if(soncount<=0){
 			$("#alter_guess").html("卧底失败");
 			$("#alter_guess").show();
 			disableallbutton();
+			$("#talk_turn").hide();
 		}
 		$("#showcount").html("平民人数:"+peoplecount+"卧底人数:"+soncount);
 	}
