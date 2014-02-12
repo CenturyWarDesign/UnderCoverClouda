@@ -18,7 +18,7 @@ App.punish = sumeru.controller.create(function(env, session){
 
 
 	env.onready=function(){
-		// document.getElementById('start_undercover').addEventListener('click', startgame);
+		document.getElementById('btn_return').addEventListener('click', returnlast);
 		touch.on(document.getElementById('swipa'), 'tap', reflashword );
 		touch.on(document.getElementById('swipa'), 'swipedown', reflashword );
 		touch.on(document.getElementById('swipa'), 'swiperight', reflashword );
@@ -28,6 +28,10 @@ App.punish = sumeru.controller.create(function(env, session){
 
 	var startgame=function(){
 		// env.redirect('/undercover_setting',{},true);
+	}
+
+	var returnlast=function(){
+		 history.go(-1);
 	}
 
 	var reflashword=function(){
