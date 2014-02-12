@@ -18,7 +18,7 @@ App.rules = sumeru.controller.create(function(env, session){
 
 
 	env.onready=function(){
-		// document.getElementById('btn_return').addEventListener('click', returnlast);
+		document.getElementById('btn_return').addEventListener('click', returnlast);
 		init();
 		// touch.trigger("swipa", 'swipedown');
 		// console.log("ready");
