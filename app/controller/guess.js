@@ -26,8 +26,9 @@ App.guess = sumeru.controller.create(function(env, session){
 		initGuess();
 		document.getElementById('restart').addEventListener('click', restart);
 		document.getElementById('setting_game').addEventListener('click', underwordsetting);
-		// document.getElementById('punish').addEventListener('click', punish);
+		document.getElementById('punish').addEventListener('click', punish);
 		$("#alter_guess").hide();
+
 	}	
 
 	var restart=function(){
@@ -40,7 +41,7 @@ App.guess = sumeru.controller.create(function(env, session){
 	}
 
 	var punish=function(){
-		// env.redirect('/punish',{},true);
+		env.redirect('/punish',{},true);
 	}
 
 	var initGuess=function(){
@@ -96,6 +97,7 @@ App.guess = sumeru.controller.create(function(env, session){
 			$("#alter_guess").show();
 			disableallbutton();
 		}
+		$("#showtext").html("卧底人数："+soncount+"平民人数："+peoplecount);
 	}
 	var disableallbutton=function(){
 		// console.log(+":disable");

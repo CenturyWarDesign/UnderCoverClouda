@@ -22,6 +22,7 @@ App.punish = sumeru.controller.create(function(env, session){
 		touch.on(document.getElementById('swipa'), 'tap', reflashword );
 		// touch.trigger("swipa", 'swipedown');
 		console.log("ready");
+		document.getElementById('back').addEventListener('click', back);
 	}
 
 	var startgame=function(){
@@ -32,9 +33,27 @@ App.punish = sumeru.controller.create(function(env, session){
 		console.log("starttap");
 		swipcount++;
 
-		$("#punishword").html("向下滑动第"+swipcount+"次"+sumeru.config.get("config"));
+		$("#punishword").html(getWord());
+	}
+	var back=function(){
+		self.close();
+	}
+	var getWord=function(){
+		var words=[
+		'台灯_电灯',
+      	'玫瑰_月季',
+		'若曦_晴川',
+		'孟非_乐嘉',
+		'牛奶_豆浆',
+		'保安_保镖',
+		'白菜_生菜',
+		'辣椒_芥末',
+		'金庸_古龙',
+		'赵敏_黄蓉',];
+		var randomword=words[parseInt(Math.random()*words.length)];
+		return randomword;
 	}
 
-
 });
+
 
