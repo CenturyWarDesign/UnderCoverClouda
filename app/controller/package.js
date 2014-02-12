@@ -5,7 +5,9 @@ sumeru.packages(
 'fanpai.js',
 'guess.js',
 'punish.js',
-'rules.js'
+'rules.js',
+'killer_setting.js',
+'killer.js'
 // 'app/asset/dist/css/bootstrap.min.css'
 )
 

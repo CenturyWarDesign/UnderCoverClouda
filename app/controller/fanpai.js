@@ -13,15 +13,6 @@ App.fanpai = sumeru.controller.create(function(env, session){
 		doRender("fanpai", ['none','z']);
 	};
 
-
-     
-
-    // onload is respond for handle all data subscription
-    // env.onload = function(){            
-    //     return [getMsgs];            
-    // };
-
-
 	var wordstrings=[];
 	var fathercount=4;
 	var soncount=1;
