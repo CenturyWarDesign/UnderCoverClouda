@@ -32,6 +32,7 @@ App.killer_setting = sumeru.controller.create(function(env, session){
 		document.getElementById('costfather').addEventListener('click', costfather);
 		document.getElementById('addson').addEventListener('click', addson);
 		document.getElementById('costson').addEventListener('click', costson);
+		document.getElementById('homepage').addEventListener('click', homepage);
 
 		$("#father_count").val(fathercount+"");
 		$("#son_count").val(soncount+"");
@@ -43,6 +44,9 @@ App.killer_setting = sumeru.controller.create(function(env, session){
 
 	}
 
+	var homepage=function(){
+		env.redirect('/homepage');
+	}
 	var rulesgame=function(){
 		env.redirect('/rules');
 	}
