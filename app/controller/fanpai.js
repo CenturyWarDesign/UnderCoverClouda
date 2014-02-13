@@ -43,6 +43,14 @@ App.fanpai = sumeru.controller.create(function(env, session){
 		
 		console.log("restart");
 		document.getElementById('nextbtn').addEventListener('click', showword);
+		document.getElementById('refresh').addEventListener('click', refresh);
+		$("#refresh").attr("disabled", "disabled");
+		showword();
+	}
+	var refresh=function(){
+		wordstrings=getWord(fathercount,soncount);
+		nowindex=nowindex-1;
+		shownumb=!shownumb;
 		showword();
 	}
 
@@ -57,6 +65,7 @@ App.fanpai = sumeru.controller.create(function(env, session){
 	}
 	
 	var showword=function(){
+		$("#refresh").removeAttr("disabled");
 		if(guess==true)
 		{
 			guess=false;
@@ -77,6 +86,10 @@ App.fanpai = sumeru.controller.create(function(env, session){
 		else{
 			$("#wordtext").show();
 		}
+
+		if(nowindex!=1){
+			$("#refresh").attr("disabled", "disabled");
+		}
 		if(!shownumb)
 		{
 			$("#wordtext").html(wordstrings[nowindex-1]);
@@ -91,6 +104,7 @@ App.fanpai = sumeru.controller.create(function(env, session){
 		}
 		// document.getElementById('nextbtn').addEventListener('click', hideword);
 		shownumb=!shownumb;
+		
 	}
 
 	var getKiller=function(fathercount){

@@ -74,7 +74,15 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 
 	var addson=function (){
 		$("#alter").hide();
+
 		var soncount=parseInt($("#son_count").html());
+		var fathercount=parseInt($("#father_count").html());
+		if(soncount>=parseInt(fathercount/3)){
+			$("#alter").html("卧底人数多余总人数的三分之一！");
+			$("#alter").show();
+			return;
+		}
+//增加词汇刷新功能
 		if(soncount>=3)
 		{
 			$("#alter").html("卧底人数过多（1-3）");
