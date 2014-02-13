@@ -21,6 +21,9 @@ App.guess = sumeru.controller.create(function(env, session){
 	var soncount=1;
 	var peoplecount=fathercount-soncount;
 	var sonword="";
+	//添加随机发言功能
+	var indexcount;
+	var speakturn=[];
 
 	env.onready=function(){
 		initGuess();
@@ -28,7 +31,8 @@ App.guess = sumeru.controller.create(function(env, session){
 		document.getElementById('setting_game').addEventListener('click', underwordsetting);
 		document.getElementById('punish').addEventListener('click', punish);
 		$("#alter_guess").hide();
-		// $("#talk_turn").html(Math.floor(Math.random()*10+1))
+		//增加随机发言功能
+		$("#talk_turn").html("从第"+speakturn[Math.floor(Math.random()*indexcount+1)]+"位开始发言")
 	}	
 
 	var restart=function(){
@@ -69,23 +73,36 @@ App.guess = sumeru.controller.create(function(env, session){
 		sonword=session.get("sonword");
 		peoplecount=fathercount-soncount;
 		console.log(peoplecount+":peoplecount");
+		//添加随机发言功能
+		for(var i=1;i<=fathercount;i++){
+			speakturn[i]=i;
+		}
+		indexcount=fathercount;
+
+
 	}
 
 	var tapindex=function(){
 		// initConfig();
 		var index=this.id.split('_')[1];
 		$("#under_"+index).attr("disabled", "disabled");
+//添加随机发言功能
+		speakturn[index]=speakturn[indexcount];
+		indexcount--;
+		console.log("tapindex");
 		if(wordstring[index-1]!=sonword)
 		{
 			peoplecount--;
 			// $("#under_"+index).html("冤死"+wordstring[index-1]);
 			$("#under_"+index).html("出局");
-			$("#talk_turn").html("从第"+Math.floor(Math.random()*10+1)+"位开始发言")
+			//添加随机发言功能
+			$("#talk_turn").html("从第"+speakturn[Math.floor(Math.random()*indexcount+1)]+"位开始发言")
 		}else{
 			soncount--;
 			// $("#under_"+index).html("卧底"+wordstring[index-1]);
 			$("#under_"+index).html("出局");
-			$("#talk_turn").html("从第"+Math.floor(Math.random()*10+1)+"位开始发言")
+			//添加随机发言功能
+			$("#talk_turn").html("从第"+speakturn[Math.floor(Math.random()*indexcount+1)]+"位开始发言")
 		}
 
 
