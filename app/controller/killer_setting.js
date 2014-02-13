@@ -42,6 +42,8 @@ App.killer_setting = sumeru.controller.create(function(env, session){
 		$("#select_undercover").hide();
 		$("#select_undercover_text").hide();
 
+		$("#title_text").html("杀人游戏");
+
 	}
 
 	var homepage=function(){
@@ -54,7 +56,7 @@ App.killer_setting = sumeru.controller.create(function(env, session){
 
      var addfather=function(){
 		$("#alter").hide();
-		var fathercount=parseInt($("#father_count").val());
+		var fathercount=parseInt($("#father_count").html());
 			if(fathercount>=maxpeople)
 		{
 			$("#alter").html("参与人数过多（"+minpeople+"-"+maxpeople+"）");
@@ -63,11 +65,11 @@ App.killer_setting = sumeru.controller.create(function(env, session){
 		}
 		fathercount=fathercount+1;
 		// alert($("#son_count").val());
-		$("#father_count").val(fathercount);
+		$("#father_count").html(fathercount);
 	}
 	var costfather=function (){
 		$("#alter").hide();
-		var fathercount=parseInt($("#father_count").val());
+		var fathercount=parseInt($("#father_count").html());
 		$("#alter").hide();
 			if(fathercount<=minpeople)
 		{
@@ -77,7 +79,7 @@ App.killer_setting = sumeru.controller.create(function(env, session){
 		}
 		fathercount=fathercount-1;
 		// alert($("#son_count").val());
-		$("#father_count").val(fathercount);
+		$("#father_count").html(fathercount);
 	}
 
 	var addson=function (){
