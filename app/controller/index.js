@@ -17,40 +17,34 @@ App.index = sumeru.controller.create(function(env, session){
 
 
 	env.onready=function(){
-		document.getElementById('start_undercover').addEventListener('click', startgame);
-		myAuth.on('statusChange',statusChangeHandle);
+		document.getElementById('game_undercover').addEventListener('click', undercover);
+		document.getElementById('game_killer').addEventListener('click', killer);
+		document.getElementById('game_true').addEventListener('click', tures);
+		document.getElementById('game_rules').addEventListener('click', rules);
+		// document.getElementById('game_click').addEventListener('click', clicks);
+		// $("#game_bottle").hide();
+	}	
+
+	var undercover=function(){
+		env.redirect('/undercover_setting',true);
 	}
 
-	var startgame=function(){
-		var myAuth = sumeru.auth.create(env); 
-		var userinfo= myAuth.getUserInfo();
-		console.log(userinfo);
-		// login();
-		// 
-		// env.redirect('/undercover_setting');		
-	}
-	
-	var statusChangeHandle = function(err,status){ 
-		switch(status){ 
-			case "not_login" : // do something 
-			console.log("not_login");
-			break; 
-			case "logined" : // do something 
-			console.log("logined");
-			break; 
-			case "doing_login" : // do something 
-			console.log("doing_login");
-			break; 
-		} 
-	} 
-
-	var login =function(){
-		var myAuth = sumeru.auth.create(env); 
-		myAuth.login('wanbin89731','wanbinGIT');
-		// var errObj = myAuth.getLastError()
-		// console.log(errObj);
+	var killer=function(){
+		env.redirect('/killer_setting',true);
 	}
 
+	var tures=function(){
+		// env.callSubController('/punish',{})
+		env.redirect('/punish',{'type':'tures'},true);
+	}
+	var rules=function(){
+		// env.callSubController('/punish',{})
+		env.redirect('/rules',{'type':'tures'},true);
+	}
+	// var clicks=function(){
+	// 	// env.callSubController('/punish',{})
+	// 	env.redirect('/rules',{'type':'tures'},true);
+	// }
 
 });
 
