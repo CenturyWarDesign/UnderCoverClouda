@@ -60,7 +60,13 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 	var costfather=function (){
 		$("#alter").hide();
 		var fathercount=parseInt($("#father_count").html());
+		var soncount=parseInt($("#son_count").html());
 		$("#alter").hide();
+		if(fathercount<=(soncount*3)){
+			$("#alter").html("卧底人数多余总人数的三分之一！");
+			$("#alter").show();
+			return;
+		}
 			if(fathercount<=4)
 		{
 			$("#alter").html("参与人数过少（4-12）");
