@@ -32,7 +32,7 @@ App.punish = sumeru.controller.create(function(env, session){
 		else{
 			$("#title").html("愿赌服输");
 		}
-
+		$("#loading").hide();
 		$("#punishword").fadeOut(300).fadeIn(300).fadeOut(300).fadeIn(300);
 	}
 
@@ -55,6 +55,7 @@ App.punish = sumeru.controller.create(function(env, session){
 		var url = "http://42.121.123.185/CenturyServer/Entry.php?cmd=PublishRandomOne"; 
 		// url="http://192.168.1.31/Entry.php?cmd=PublishRandomOne";
 		sumeru.external.get(url,getCallback);
+		$("#loading").show();
 	}
 	
 
@@ -79,6 +80,7 @@ App.punish = sumeru.controller.create(function(env, session){
 			$("#punishword").css('color','#996633');
 			$("#punishword").html("可以免除惩罚");
 		}
+		$("#loading").hide();
 		
 	} 
 
