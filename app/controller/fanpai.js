@@ -65,7 +65,12 @@ App.fanpai = sumeru.controller.create(function(env, session){
 	}
 	
 	var showword=function(){
-		$("#refresh").removeAttr("disabled");
+		// console.log(game_type);
+		if(game_type!='killer')
+		{
+			$("#refresh").removeAttr("disabled");
+		}
+		
 		if(guess==true)
 		{
 			guess=false;

@@ -34,8 +34,8 @@ App.killer_setting = sumeru.controller.create(function(env, session){
 		document.getElementById('costson').addEventListener('click', costson);
 		document.getElementById('homepage').addEventListener('click', homepage);
 
-		$("#father_count").val(fathercount+"");
-		$("#son_count").val(soncount+"");
+		$("#father_count").html(fathercount+"");
+		$("#son_count").html(soncount+"");
 		$("#alter").hide();
 
 
@@ -112,8 +112,8 @@ App.killer_setting = sumeru.controller.create(function(env, session){
 
 	var underword=function(){
 		// env.hide();
-		var fathercount=parseInt($("#father_count").val());
-		var soncount=parseInt($("#son_count").val());
+		var fathercount=parseInt($("#father_count").html());
+		var soncount=parseInt($("#son_count").html());
 		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':soncount,'type':'killer'},true);
 	}
 
