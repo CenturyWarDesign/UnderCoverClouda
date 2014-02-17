@@ -84,7 +84,10 @@ App.fanpai = sumeru.controller.create(function(env, session){
 				env.redirect('/killer_game',{'content':wordstrings},true);
 			}
 			else{
-				env.redirect('/guess',{'content':wordstrings,'fathercount':fathercount,'soncount':soncount,'sonword':sonword},true);
+				var isshowlastnumber=session.get("isshowlastnumber");
+
+
+				env.redirect('/guess',{'content':wordstrings,'fathercount':fathercount,'soncount':soncount,'sonword':sonword,'isshowlastnumber':isshowlastnumber},true);
 			}
 			return;
 		}

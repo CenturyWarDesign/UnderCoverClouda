@@ -121,7 +121,12 @@ App.guess = sumeru.controller.create(function(env, session){
 			disableallbutton();
 			$("#talk_turn").hide();
 		}
-		$("#showcount").html("平民人数:"+peoplecount+"卧底人数:"+soncount);
+
+		var isshowlastnumber=session.get("isshowlastnumber");
+		if(isshowlastnumber=="1")
+		{
+		    $("#showcount").html("平民人数:"+peoplecount+"卧底人数:"+soncount);
+	    }
 	}
 	var disableallbutton=function(){
 		// console.log(+":disable");

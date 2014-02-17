@@ -2,40 +2,33 @@
 
 <div><h1 id="title_text">开始游戏</h1><div>
 
-
-<div  style="margin-top:10px" class="" id="select_people_text"><h2>参与人数</h2></div>
-
-<div class="row col-md-offset-1" >
-<button type="button" class="btn btn-default pull-left col-md-2" id="costfather" ><h3>减少</h3></button>
-
-<h2 class="pull-left text-center col-md-2" id="father_count" >4</h2>
-
-<button type="button"  class="btn btn-default pull-left col-md-2" id="addfather"><h3>添加</h3></button>
-
+<div style="width:30%"><h2>参与人数:</h2></div>
+<div class="btn-group btn-group-lg">
+<button type="button" class="btn btn-default" id="costfather" >减少</button>
+<button type="button" class="btn btn-default" id="father_count" disabled="disabled">4</button>
+<button type="button"  class="btn btn-default" id="addfather">添加</button>
 </div>
+
+
 
 </div>
 
 <div class="clearfix"></div>
 
-<div  style="margin-top:10px" id="select_undercover_text"><h2>卧底人数</h2></div>
 
 
 
-<div class="row col-md-offset-1" id="select_undercover">
-
-<button type="button" class="btn btn-default pull-left  col-md-2" id="costson" ><h3>减少</h3></button>
-
-<h2 class="pull-left text-center  col-md-2" id="son_count">1</h2>
-
-<button type="button"  class="btn btn-default pull-left  col-md-2" id="addson"><h3>添加</h3></button>
+<div style="width:30%" id="select_undercover_text"><h2>卧底人数:</h2></div>
+<div class="btn-group btn-group-lg"  id="select_undercover">
+<button type="button" class="btn btn-default" id="costson" >减少</button>
+<button type="button" class="btn btn-default " id="son_count"  disabled="disabled" >1</button>
+<button type="button"  class="btn btn-default" id="addson">添加</button>
 </div>
 
-<div class="clearfix"></div>
 
+
+<div class="clearfix"></div>
 <div class="alert alert-danger" id="alter" style="margin-top:10px">提示：选择平民人数及卧底人数开始游戏吧</div>
-
-
 <table  style="width:100%">
 <th>
 <td  style="width:60%">

@@ -116,9 +116,12 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 
 	var underword=function(){
 		// env.hide();
+		var isshowlastnumbercb=document.getElementById("isshowlastnumber");
+		var isshowlastnumber = isshowlastnumbercb.checked ? 1:0;
+		
 		var fathercount=parseInt($("#father_count").html());
 		var soncount=parseInt($("#son_count").html());
-		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':soncount,'type':'undercover'},true);
+		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':soncount,'type':'undercover','isshowlastnumber':isshowlastnumber},true);
 	}
 
 

@@ -1,12 +1,14 @@
 CACHE MANIFEST 
-#version:1392300241395
+#version:1392648918873
 CACHE:
 sumeru.css
 sumeru.js
 app.js
+/view/.DS_Store
 /view/fanpai.html
 /view/guess.html
 /view/homepage.html
+/view/index.html
 /view/itworks.html
 /view/killer_game.html
 /view/punish.html
