@@ -29,7 +29,7 @@ App.homepage = sumeru.controller.create(function(env, session){
 	var undercover=function(){
 		// env.close();
 		env.redirect('/undercover_setting',true);
-		initGuess();
+		// initGuess();
 	}
 
 	var killer=function(){
