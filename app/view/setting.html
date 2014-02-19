@@ -3,15 +3,15 @@
 <div><h1 id="title_text">开始游戏</h1><div>
 
 <div style="width:30%"><h2>参与人数:</h2></div>
-<div class="btn-group btn-group-lg">
+<!-- <div class="btn-group btn-group-lg">
 <button type="button" class="btn btn-default" id="costfather" >减少</button>
 <button type="button" class="btn btn-default" id="father_count" disabled="disabled">4</button>
 <button type="button"  class="btn btn-default" id="addfather">添加</button>
-</div>
+</div> -->
 
 
 
-<h1 class="pull-left" id="father_count" style="width:40%;text-align:center;padding-left:30px;padding-right:30px;">
+<h1 class="pull-left" id="father_count" style="width:100%;text-align:center;padding-left:30px;padding-right:30px;">
 <span>
 <div id="slider-range-cy"></div>
 </span>
@@ -20,24 +20,12 @@
 </span>
 </h1>
 
-<button type="button"  class="btn btn-default pull-left" id="addfather" style="width:30%;"><h3>添加</h3></button>
-</div>
-
 </div>
 
 <div class="clearfix"></div>
 
 
-
-
-<!-- <<<<<<< HEAD
-<div style="width:30%" id="select_undercover_text"><h2>卧底人数:</h2></div>
-<div class="btn-group btn-group-lg"  id="select_undercover">
-<button type="button" class="btn btn-default" id="costson" >减少</button>
-<button type="button" class="btn btn-default " id="son_count"  disabled="disabled" >1</button>
-<button type="button"  class="btn btn-default" id="addson">添加</button>
-======= -->
-<h1 class="pull-left" id="son_count" style="width:40%;text-align:center;padding-left:30px;padding-right:30px;">
+<h1 class="pull-left" id="son_count" style="width:100%;text-align:center;padding-left:30px;padding-right:30px;">
 <span >
 <div id="slider-range-wd"></div>
 </span>
@@ -46,13 +34,29 @@
 </span>
 </h1>
 
-<button type="button"  class="btn btn-default pull-left" id="addson" style="width:30%;"><h3>添加</h3></button>
-<!-- >>>>>>> 添加谁是卧底的减少和增加人数的滑动板 -->
-</div>
+
+<div style="width:30%" id="undercover_select"><h2>词汇类别:</h2></div>
+  <select class="form-control" id="wordkind">
+  <option>所有</option>
+  <option>人物</option>
+  <option>日常</option>
+  <option>吃货</option>
+  <option>重口味</option>
+</select>
+
+
+
 
 <div class="clearfix"></div>
 <div class="alert alert-danger" id="alter" style="margin-top:10px">提示：选择平民人数及卧底人数开始游戏吧</div>
-<input id="isshowlastnumber" type="checkbox" >翻牌以后是否显示平民和卧底的人数</input>
+
+  <div class="checkbox h2">
+    <label>
+      <input type="checkbox" id="isshowlastnumber" class="lg"> 亮名身份
+    </label>
+  </div>
+
+
 <table  style="width:100%">
 <th>
 <td  style="width:60%">

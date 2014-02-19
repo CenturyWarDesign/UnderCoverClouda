@@ -22,10 +22,10 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 		
 		document.getElementById('start_game').addEventListener('click', underword);
 		document.getElementById('rules_game').addEventListener('click', rulesgame);
-		document.getElementById('addfather').addEventListener('click', addfather);
-		document.getElementById('costfather').addEventListener('click', costfather);
-		document.getElementById('addson').addEventListener('click', addson);
-		document.getElementById('costson').addEventListener('click', costson);
+		// document.getElementById('addfather').addEventListener('click', addfather);
+		// document.getElementById('costfather').addEventListener('click', costfather);
+		// document.getElementById('addson').addEventListener('click', addson);
+		// document.getElementById('costson').addEventListener('click', costson);
 		document.getElementById('homepage').addEventListener('click', homepage);
 
 		$("#father_count").val(fathercount+"");
@@ -98,8 +98,9 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 	}
 	var costfather=function (){
 		$("#alter").hide();
-<<<<<<< HEAD
-		var fathercount=parseInt($("#father_count").html());
+
+		var fathercount=parseInt($("#amount-cy").html());
+		// var fathercount=parseInt($("#father_count").html());
 		var soncount=parseInt($("#son_count").html());
 		$("#alter").hide();
 		if(fathercount<=(soncount*3)){
@@ -107,10 +108,6 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 			$("#alter").show();
 			return;
 		}
-=======
-		var fathercount=parseInt($("#amount-cy").html());
-		// $("#alter").hide();
->>>>>>> 添加谁是卧底的减少和增加人数的滑动板
 			if(fathercount<=4)
 		{
 			$("#alter").html("参与人数过少（4-12）");
@@ -125,19 +122,15 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 
 	var addson=function (){
 		$("#alter").hide();
-<<<<<<< HEAD
 
-		var soncount=parseInt($("#son_count").html());
+		// var soncount=parseInt($("#son_count").html());
+		var soncount=parseInt($("#amount-wd").html());
 		var fathercount=parseInt($("#father_count").html());
 		if(soncount>=parseInt(fathercount/3)){
 			$("#alter").html("卧底人数多余总人数的三分之一！");
 			$("#alter").show();
 			return;
 		}
-//增加词汇刷新功能
-=======
-		var soncount=parseInt($("#amount-wd").html());
->>>>>>> 添加谁是卧底的减少和增加人数的滑动板
 		if(soncount>=3)
 		{
 			$("#alter").html("卧底人数过多（1-3）");
