@@ -3,42 +3,53 @@
 <div><h1 id="title_text">开始游戏</h1><div>
 
 <div style="width:30%"><h2>参与人数:</h2></div>
-<!-- <div class="btn-group btn-group-lg">
+
+
+<div class="btn-group btn-group-lg">
 <button type="button" class="btn btn-default" id="costfather" >减少</button>
 <button type="button" class="btn btn-default" id="father_count" disabled="disabled">4</button>
 <button type="button"  class="btn btn-default" id="addfather">添加</button>
-</div> -->
+</div>
 
 
 
-<h1 class="pull-left" id="father_count" style="width:100%;text-align:center;padding-left:30px;padding-right:30px;">
+<!-- <h1 class="pull-left" id="father_count" style="width:100%;text-align:center;padding-left:30px;padding-right:30px;">
 <span>
 <div id="slider-range-cy"></div>
 </span>
 <span style="text-algin:center">
   <label  id="amount-cy" style="border:0; color:#f6931f; font-weight:bold;"></label>
 </span>
-</h1>
+</h1> -->
 
 </div>
 
 <div class="clearfix"></div>
 
+<!-- killerclass 是杀人游戏里面需要显示的类别 -->
 
-<div style="width:30%"><h2>卧底人数:</h2></div>
+<div style="width:30%"  class="killerclass"><h2>卧底人数:</h2></div>
 
-<h1 class="pull-left" id="son_count" style="width:100%;text-align:center;padding-left:30px;padding-right:30px;">
+<div class="btn-group btn-group-lg killerclass" >
+<button type="button" class="btn btn-default" id="costson" >减少</button>
+<button type="button" class="btn btn-default " id="son_count"  disabled="disabled" >1</button>
+<button type="button"  class="btn btn-default" id="addson">添加</button>
+</div>
+
+
+
+<!-- <h1 class="pull-left" id="son_count" style="width:100%;text-align:center;padding-left:30px;padding-right:30px;">
 <span >
 <div id="slider-range-wd"></div>
 </span>
 <span style="text-algin:center">
   <label  id="amount-wd" style="border:0; color:#f6931f; font-weight:bold;"></label>
 </span>
-</h1>
+</h1> -->
 
 
-<div style="width:30%" id="undercover_select"><h2>词汇类别:</h2></div>
-  <select class="form-control" id="wordkind">
+<div style="width:30%" id="undercover_select" class="killerclass"><h2>词汇类别:</h2></div>
+  <select class="form-control killerclass"  id="wordkind">
   <option>所有</option>
   <option>人物</option>
   <option>日常</option>
@@ -48,13 +59,13 @@
 
 
 </div>
-<button type="button" id="baiban"><span id ="baibancontent">白板关闭</span></button>
+<button type="button" id="baiban" class="btn btn-default btn-lg btn-block killerclass" style="width:100px;margin:10px 0px"><span id ="baibancontent">白板关闭</span></button>
 <div class="clearfix"></div>
 
 <div class="clearfix"></div>
 <div class="alert alert-danger" id="alter" style="margin-top:10px">提示：选择平民人数及卧底人数开始游戏吧</div>
 
-  <div class="checkbox h2">
+  <div class="checkbox h2 killerclass">
     <label>
       <input type="checkbox" id="isshowlastnumber" class="lg"> 亮名身份
     </label>

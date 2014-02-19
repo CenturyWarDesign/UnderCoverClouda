@@ -39,8 +39,8 @@ App.killer_setting = sumeru.controller.create(function(env, session){
 		$("#alter").hide();
 
 
-		$("#select_undercover").hide();
-		$("#select_undercover_text").hide();
+		$(".killerclass").hide();
+		// $("#select_undercover_text").hide();
 
 		$("#title_text").html("杀人游戏");
 
