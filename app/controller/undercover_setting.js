@@ -31,8 +31,46 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 		$("#father_count").val(fathercount+"");
 		$("#son_count").val(soncount+"");
 		$("#alter").hide();
+    $( "#slider-range-cy" ).slider({
+      range: "min",
+      value: 4,
+      min: 4,
+      max: 12,
+      slide: function( event, ui ) {
+      	var num = parseInt(ui.value);
+        if(num<4||num>12){
+			$("#alter").html("参与人数过多（4-12）");
+			$("#alter").show();
+			return;
+        }
+        else{
+        	$( "#amount-cy" ).html( ui.value );
 
-		$("#title_text").html("谁是卧底");
+        }
+      }
+    });
+    $( "#amount-cy" ).html( $( "#slider-range-cy" ).slider( "value" ) );
+
+    $( "#slider-range-wd" ).slider({
+      range: "min",
+      value: 1,
+      min: 1,
+      max: 3,
+      slide: function( event, ui ) {
+      	var num = parseInt(ui.value);
+        if(num<1||num>3){
+			$("#alter").html("参与人数过多（1-3）");
+			$("#alter").show();
+			return;
+        }
+        else{
+        	$( "#amount-wd" ).html( ui.value );
+
+        }        
+      }
+    });
+    $( "#amount-wd" ).html( $( "#slider-range-wd" ).slider( "value" ) );
+
 	}
 
 
@@ -46,7 +84,7 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 
      var addfather=function(){
 		$("#alter").hide();
-		var fathercount=parseInt($("#father_count").html());
+		var fathercount=parseInt($("#amount-cy").html());
 			if(fathercount>=12)
 		{
 			$("#alter").html("参与人数过多（4-12）");
@@ -54,11 +92,13 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 			return;
 		}
 		fathercount=fathercount+1;
+		$("#slider-range-cy").slider("value",fathercount);
 		// alert($("#son_count").val());
-		$("#father_count").html(fathercount);
+		$("#amount-cy").html(fathercount);
 	}
 	var costfather=function (){
 		$("#alter").hide();
+<<<<<<< HEAD
 		var fathercount=parseInt($("#father_count").html());
 		var soncount=parseInt($("#son_count").html());
 		$("#alter").hide();
@@ -67,6 +107,10 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 			$("#alter").show();
 			return;
 		}
+=======
+		var fathercount=parseInt($("#amount-cy").html());
+		// $("#alter").hide();
+>>>>>>> 添加谁是卧底的减少和增加人数的滑动板
 			if(fathercount<=4)
 		{
 			$("#alter").html("参与人数过少（4-12）");
@@ -74,12 +118,14 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 			return;
 		}
 		fathercount=fathercount-1;
+		$("#slider-range-cy").slider("value",fathercount);
 		// alert($("#son_count").val());
-		$("#father_count").html(fathercount);
+		$("#amount-cy").html(fathercount);
 	}
 
 	var addson=function (){
 		$("#alter").hide();
+<<<<<<< HEAD
 
 		var soncount=parseInt($("#son_count").html());
 		var fathercount=parseInt($("#father_count").html());
@@ -89,6 +135,9 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 			return;
 		}
 //增加词汇刷新功能
+=======
+		var soncount=parseInt($("#amount-wd").html());
+>>>>>>> 添加谁是卧底的减少和增加人数的滑动板
 		if(soncount>=3)
 		{
 			$("#alter").html("卧底人数过多（1-3）");
@@ -96,32 +145,39 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 			return;
 		}
 		soncount=soncount+1;
+	    $("#slider-range-wd").slider("value",soncount);
 		// alert($("#son_count").val());
-		$("#son_count").html(soncount);
+		$("#amount-wd").html(soncount);
 	}
 	var costson=function (){
 		$("#alter").hide();
-		var soncount=parseInt($("#son_count").html());
-		$("#alter").hide();
-			if(soncount<=1)
+		var soncount=parseInt($("#amount-wd").html());
+		if(soncount<=1)
 		{
 			$("#alter").html("卧底人数过少（1-3）");
 			$("#alter").show();
 			return;
 		}
 		soncount=soncount-1;
+	    $("#slider-range-wd").slider("value",soncount);
 		// alert($("#son_count").val());
-		$("#son_count").html(soncount);
+		$("#amount-wd").html(soncount);
 	}
 
 	var underword=function(){
 		// env.hide();
+
 		var isshowlastnumbercb=document.getElementById("isshowlastnumber");
 		var isshowlastnumber = isshowlastnumbercb.checked ? 1:0;
 		
-		var fathercount=parseInt($("#father_count").html());
-		var soncount=parseInt($("#son_count").html());
+		
+
+		var fathercount=parseInt($("#amount-cy").html());
+		var soncount=parseInt($("#amount-wd").html());
+		// var fathercount=parseInt($("#father_count").html());
+		// var soncount=parseInt($("#son_count").html());
 		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':soncount,'type':'undercover','isshowlastnumber':isshowlastnumber},true);
+		// env.redirect('/fanpai',{'fathercount':fathercount,'soncount':soncount,'type':'undercover'},true);
 	}
 
 
