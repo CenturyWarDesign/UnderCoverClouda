@@ -268,11 +268,15 @@ App.fanpai = sumeru.controller.create(function(env, session){
 		 '高难度_劳力士_欧米伽',
 		 '高难度_反弹琵琶_乱弹棉花'];
 
+	var change=0;
+
 	env.onready=function(){
 		if(parseInt(session.get("fathercount"))>0)
 			fathercount=session.get("fathercount");
 		if(parseInt(session.get("fathercount"))>0)
 			soncount=session.get("soncount");
+			change=session.get("change");
+			console.log(change);
 
 		wordtype=session.get("wordtype");
 		console.log(wordtype);
@@ -341,7 +345,7 @@ App.fanpai = sumeru.controller.create(function(env, session){
 										'soncount':soncount,
 										'sonword':sonword,
 										'isshowlastnumber':isshowlastnumber,
-										'wordtype':wordtype
+										'wordtype':wordtype,'change':change
 									},true);
 			}
 			return;
@@ -437,10 +441,20 @@ App.fanpai = sumeru.controller.create(function(env, session){
 			}
 			retrunarr[randomindex]=tem[sonindex];
 		};
+console.log(change);
+		if(change==1){
+			var randomindex=parseInt(Math.random()*fathercount);
+			while(retrunarr[randomindex]==tem[sonindex])
+			{
+				randomindex=parseInt(Math.random()*fathercount);
+			}
+			retrunarr[randomindex]="白板";
+		};
 
 		for (var i = fathercount-1; i >= 0; i--) {
 			console.log(retrunarr[i]+i);
 		};
+		
 		// session.set("undercoverword",retrunarr.toString());
 		// session.set("sonword",tem[sonindex]);
 		// session.set("soncount",soncount);

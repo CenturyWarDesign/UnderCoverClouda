@@ -13,6 +13,7 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 	};
 	var fathercount=4;
 	var soncount=1;
+	var change=0;
 
 	env.onready=function(){
 		if(parseInt(session.get("fathercount"))>0)
@@ -27,6 +28,7 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 		// document.getElementById('addson').addEventListener('click', addson);
 		// document.getElementById('costson').addEventListener('click', costson);
 		document.getElementById('homepage').addEventListener('click', homepage);
+		document.getElementById('baiban').addEventListener('click', baibanchange);
 
 		$("#father_count").val(fathercount+"");
 		$("#son_count").val(soncount+"");
@@ -80,7 +82,19 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 	var rulesgame=function(){
 		env.redirect('/rules');
 	}
+	var baibanchange=function(){
+		
+		if(change){
+			$("#baibancontent").html("白板关闭");
+			change=0;
+		}else{
+			$("#baibancontent").html("白板打开");
+			change=1;
+		}
+		
 
+
+	}
 
      var addfather=function(){
 		$("#alter").hide();
@@ -165,8 +179,8 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 		var fathercount=parseInt($("#amount-cy").html());
 		var soncount=parseInt($("#amount-wd").html());
 		var wordkind=$("#wordkind").val();
-		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':soncount,'type':'undercover','isshowlastnumber':isshowlastnumber,'wordtype':wordkind},true);
-		
+		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':soncount,'type':'undercover','isshowlastnumber':isshowlastnumber,'wordtype':wordkind,'change':change},true);
+
 	}
 
 

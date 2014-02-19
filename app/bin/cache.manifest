@@ -1,0 +1,18 @@
+CACHE MANIFEST 
+#version:1392736590308
+CACHE:
+sumeru.css
+sumeru.js
+app.js
+/view/fanpai.html
+/view/guess.html
+/view/homepage.html
+/view/index.html
+/view/itworks.html
+/view/killer_game.html
+/view/punish.html
+/view/rules.html
+/view/setting.html
+/view/undercover.html
+NETWORK:
+*

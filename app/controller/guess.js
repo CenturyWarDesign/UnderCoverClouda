@@ -19,6 +19,7 @@ App.guess = sumeru.controller.create(function(env, session){
 	var wordstring=[];
 	var fathercount=4;
 	var soncount=1;
+	var change=0;
 	var peoplecount=fathercount-soncount;
 	var sonword="";
 	//添加随机发言功能
@@ -40,9 +41,7 @@ App.guess = sumeru.controller.create(function(env, session){
 		// env.close();
 		var isshowlastnumber = session.get("isshowlastnumber");
 		wordtype=session.get("wordtype");
-		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':Math.max(soncount,1),'isshowlastnumber':isshowlastnumber,'wordtype':wordtype},true);
-		
-
+		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':Math.max(soncount,1),'isshowlastnumber':isshowlastnumber,'wordtype':wordtype,'change':change},true);
 		initGuess();
 	}
 
@@ -77,7 +76,9 @@ App.guess = sumeru.controller.create(function(env, session){
 		soncount=parseInt(session.get("soncount"));
 		sonword=session.get("sonword");
 		peoplecount=fathercount-soncount;
+		change=parseInt(session.get("change"));
 		console.log(peoplecount+":peoplecount");
+
 		//添加随机发言功能
 		for(var i=1;i<=fathercount;i++){
 			speakturn[i]=i;
