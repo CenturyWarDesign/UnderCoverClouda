@@ -409,11 +409,11 @@ App.fanpai = sumeru.controller.create(function(env, session){
 
 
 	var getWord=function(fathercount,soncount,type){
-		 if(type!='all'){
+		 if(type!='所有'){
 		 	var temwordarr=[];
 		 	for(var i=0;i<words.length;i++){
 		 		if(words[i].split('_')[0]==type){
-		 			temwordarr.push(words[i].split('_')[1]+"_"+words[i].split('_')[2]);
+		 			temwordarr.push(words[i]);
 		 		}
 		 	}
 		 	if(temwordarr.length>0)
@@ -424,7 +424,7 @@ App.fanpai = sumeru.controller.create(function(env, session){
 
 		var selectword = words[parseInt(Math.random()*words.length)];
 		var temget=selectword.split("_");
-		var tem=[temget[0],temget[1]];
+		var tem=[temget[1],temget[2]];
 		var fatherindex = parseInt(Math.random()*2);
 		
 		var sonindex=Math.abs(fatherindex-1);
