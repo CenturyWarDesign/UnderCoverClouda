@@ -37,7 +37,8 @@ App.guess = sumeru.controller.create(function(env, session){
 
 	var restart=function(){
 		// env.close();
-		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':Math.max(soncount,1)},true);
+		var isshowlastnumber = session.get("isshowlastnumber");
+		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':Math.max(soncount,1),'isshowlastnumber':isshowlastnumber},true);
 		initGuess();
 	}
 
