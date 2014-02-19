@@ -21,7 +21,8 @@ App.fanpai = sumeru.controller.create(function(env, session){
 	var sonword="";
 	var guess=false;
 	var game_type="undercover";
-	var wordtype="all";
+	var wordtype="所有";
+
 
 	var words=[
 		 '人物_保安_保镖',
@@ -273,6 +274,9 @@ App.fanpai = sumeru.controller.create(function(env, session){
 		if(parseInt(session.get("fathercount"))>0)
 			soncount=session.get("soncount");
 
+		wordtype=session.get("wordtype");
+		console.log(wordtype);
+
 		//killer 代表杀人游戏  undercover代表谁是卧底
 		game_type=session.get("type");
 
@@ -332,9 +336,13 @@ App.fanpai = sumeru.controller.create(function(env, session){
 			}
 			else{
 				var isshowlastnumber=session.get("isshowlastnumber");
-
-
-				env.redirect('/guess',{'content':wordstrings,'fathercount':fathercount,'soncount':soncount,'sonword':sonword,'isshowlastnumber':isshowlastnumber},true);
+				env.redirect('/guess',{'content':wordstrings,
+										'fathercount':fathercount,
+										'soncount':soncount,
+										'sonword':sonword,
+										'isshowlastnumber':isshowlastnumber,
+										'wordtype':wordtype
+									},true);
 			}
 			return;
 		}
@@ -397,8 +405,6 @@ App.fanpai = sumeru.controller.create(function(env, session){
 
 
 	var getWord=function(fathercount,soncount,type){
-		
-
 		 if(type!='all'){
 		 	var temwordarr=[];
 		 	for(var i=0;i<words.length;i++){
@@ -406,12 +412,15 @@ App.fanpai = sumeru.controller.create(function(env, session){
 		 			temwordarr.push(words[i].split('_')[1]+"_"+words[i].split('_')[2]);
 		 		}
 		 	}
-		 	words=temwordarr;
+		 	if(temwordarr.length>0)
+		 	{
+		 		words=temwordarr;
+			}
 		 }
 
 		var selectword = words[parseInt(Math.random()*words.length)];
 		var temget=selectword.split("_");
-		var tem=[temget[1],temget[2]];
+		var tem=[temget[0],temget[1]];
 		var fatherindex = parseInt(Math.random()*2);
 		
 		var sonindex=Math.abs(fatherindex-1);

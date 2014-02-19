@@ -100,7 +100,6 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 		$("#alter").hide();
 
 		var fathercount=parseInt($("#amount-cy").html());
-		// var fathercount=parseInt($("#father_count").html());
 		var soncount=parseInt($("#son_count").html());
 		$("#alter").hide();
 		if(fathercount<=(soncount*3)){
@@ -108,7 +107,7 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 			$("#alter").show();
 			return;
 		}
-			if(fathercount<=4)
+		if(fathercount<=4)
 		{
 			$("#alter").html("参与人数过少（4-12）");
 			$("#alter").show();
@@ -162,15 +161,12 @@ App.undercover_setting = sumeru.controller.create(function(env, session){
 
 		var isshowlastnumbercb=document.getElementById("isshowlastnumber");
 		var isshowlastnumber = isshowlastnumbercb.checked ? 1:0;
-		
-		
 
 		var fathercount=parseInt($("#amount-cy").html());
 		var soncount=parseInt($("#amount-wd").html());
-		// var fathercount=parseInt($("#father_count").html());
-		// var soncount=parseInt($("#son_count").html());
-		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':soncount,'type':'undercover','isshowlastnumber':isshowlastnumber},true);
-		// env.redirect('/fanpai',{'fathercount':fathercount,'soncount':soncount,'type':'undercover'},true);
+		var wordkind=$("#wordkind").val();
+		env.redirect('/fanpai',{'fathercount':fathercount,'soncount':soncount,'type':'undercover','isshowlastnumber':isshowlastnumber,'wordtype':wordkind},true);
+		
 	}
 
 
