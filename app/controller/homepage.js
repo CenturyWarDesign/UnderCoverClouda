@@ -22,6 +22,7 @@ App.homepage = sumeru.controller.create(function(env, session){
 		document.getElementById('game_undercover').addEventListener('click', undercover);
 		document.getElementById('game_killer').addEventListener('click', killer);
 		document.getElementById('game_tures').addEventListener('click', tures);
+		document.getElementById('game_numbers').addEventListener('click', numbers);
 		document.getElementById('game_rules').addEventListener('click', rules);
 		document.getElementById('internet_publish').addEventListener('click', internet_publish);
 
@@ -46,6 +47,10 @@ App.homepage = sumeru.controller.create(function(env, session){
 	var tures=function(){
 		// env.callSubController('/punish',{})
 		env.redirect('/punish',true);
+	}
+	var numbers=function(){
+		// env.callSubController('/punish',{})
+		env.redirect('/click_game',{'type':'tures'},true);
 	}
 
 	var rules=function(){
