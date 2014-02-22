@@ -7,6 +7,7 @@ if(sumeru.BAE_VERSION){
   }); 
   sumeru.config({
     site_url : 'http://century.duapp.com/', //with tailing slash
+    // site_url : '127.0.0.1/', //with tailing slash
   });
   sumeru.config.cluster({
       enable : false,

@@ -23,6 +23,7 @@ App.homepage = sumeru.controller.create(function(env, session){
 		document.getElementById('game_killer').addEventListener('click', killer);
 		document.getElementById('game_tures').addEventListener('click', tures);
 		document.getElementById('game_rules').addEventListener('click', rules);
+		// console.log(env);
 		// $("#talk_turn").html(Math.floor(Math.random()*10+1))
 	}	
 
