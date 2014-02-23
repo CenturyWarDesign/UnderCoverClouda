@@ -29,6 +29,7 @@ App.internet_publish = sumeru.controller.create(function(env, session) {
 		$("#loading").show();
 	}
 	var publishCallBack = function(data) {
+		console.log(data);
 		var stu = eval('(' + data + ')');
 		var temdata = eval('(' + stu.data + ')');
 		for (var i = 0; i < temdata.length; i++) {
