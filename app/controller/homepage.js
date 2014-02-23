@@ -23,9 +23,8 @@ App.homepage = sumeru.controller.create(function(env, session){
 		document.getElementById('game_killer').addEventListener('click', killer);
 		document.getElementById('game_tures').addEventListener('click', tures);
 		document.getElementById('game_rules').addEventListener('click', rules);
-		// console.log(env);
-		var clientUId = sumeru.clientId;
-		console.log(sumeru);
+		document.getElementById('internet_publish').addEventListener('click', internet_publish);
+
 		// $("#talk_turn").html(Math.floor(Math.random()*10+1))
 	}	
 
@@ -39,10 +38,16 @@ App.homepage = sumeru.controller.create(function(env, session){
 		env.redirect('/killer_setting',true);
 	}
 
+	var internet_publish=function(){
+		// env.callSubController('/punish',{})
+		env.redirect('/internet_publish',{'type':'tures'},true);
+	}
+	
 	var tures=function(){
 		// env.callSubController('/punish',{})
-		env.redirect('/punish',{'type':'tures'},true);
+		env.redirect('/punish',true);
 	}
+
 	var rules=function(){
 		// env.callSubController('/punish',{})
 		env.redirect('/rules',{'type':'tures'},true);

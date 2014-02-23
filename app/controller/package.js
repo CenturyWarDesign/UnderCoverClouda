@@ -9,7 +9,8 @@ sumeru.packages(
 'killer_setting.js',
 'killer_game.js',
 'homepage.js',
-'index.js'
+'index.js',
+'internet_publish.js'
 // 'app/asset/dist/css/bootstrap.min.css'
 )
 
