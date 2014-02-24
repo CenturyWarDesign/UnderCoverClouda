@@ -14,8 +14,8 @@ Library.base = sumeru.Library.create(
 			}
 			return JSON.stringify(jsondata);
 		}
-		exports.getUrl = function(command) {
-			var url = Library.config.site_url() + "?cmd=" + command + "&sign=" + Library.base.getsign();
+		exports.getUrl = function(command,data) {
+			var url = Library.config.site_url() + "?cmd=" + command + "&sign=" + Library.base.getsign()+"&data="+JSON.stringify(data);
 			return url;
 		}
 		//在这里进行初始化handlebars
