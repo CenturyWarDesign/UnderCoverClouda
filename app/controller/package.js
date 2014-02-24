@@ -10,7 +10,7 @@ sumeru.packages(
 'killer_game.js',
 'homepage.js',
 'index.js',
-'internet_publish.js'
+'internet_publish.js',
 'click_game.js'
 
 
