@@ -11,9 +11,8 @@ sumeru.packages(
 'homepage.js',
 'index.js',
 'internet_publish.js',
-'click_game.js'
-
-
+'click_game.js',
+'publish.js'
 // 'app/asset/dist/css/bootstrap.min.css'
 )
 
