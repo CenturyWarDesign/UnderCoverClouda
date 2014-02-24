@@ -1,3 +1,3 @@
 sumeru.config({
-	site_url:"http://localhost:18080/"
+	site_url:"http://192.168.1.106:18080/"
 });
