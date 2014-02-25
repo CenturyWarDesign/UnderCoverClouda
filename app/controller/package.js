@@ -12,7 +12,8 @@ sumeru.packages(
 'index.js',
 'internet_publish.js',
 'click_game.js',
-'publish.js'
+'publish.js',
+'turnbottle.js'
 // 'app/asset/dist/css/bootstrap.min.css'
 )
 

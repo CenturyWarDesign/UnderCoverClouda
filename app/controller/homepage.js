@@ -25,7 +25,7 @@ App.homepage = sumeru.controller.create(function(env, session){
 		document.getElementById('game_numbers').addEventListener('click', numbers);
 		document.getElementById('game_rules').addEventListener('click', rules);
 		document.getElementById('internet_publish').addEventListener('click', internet_publish);
-
+        document.getElementById('turnbottlebtn').addEventListener('click',turnbottle);
 		// $("#talk_turn").html(Math.floor(Math.random()*10+1))
 	}	
 
@@ -57,4 +57,8 @@ App.homepage = sumeru.controller.create(function(env, session){
 		// env.callSubController('/punish',{})
 		env.redirect('/rules',{'type':'tures'},true);
 	}
+
+    var turnbottle = function(){
+    	env.redirect('/turnbottle',true);
+    }
 });
