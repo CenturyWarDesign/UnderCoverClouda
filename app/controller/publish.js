@@ -17,7 +17,6 @@ App.publish = sumeru.controller.create(function(env, session) {
 		touch.on(document.getElementById('back'), 'tap', returnlast);
 		touch.on(document.getElementById('commit'), 'tap', sendPunish);
 		var content=session.get("content");
-		console.log(content);
 		$("#content").html(content);		// $("#static").modal();
 		// $('#change').modal(options)
 		// $('#myModal').modal('toggle');
