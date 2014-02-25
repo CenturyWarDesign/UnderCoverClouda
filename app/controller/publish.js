@@ -25,7 +25,7 @@ App.publish = sumeru.controller.create(function(env, session) {
 
 	var sendPunish= function(){
 		var postData = {
-			"content": $("#content").html(),
+			"content": $("#content").val(),
 			"type": 1
 		}
 		var url = Library.base.getUrl("PublishNew",postData);
