@@ -30,7 +30,6 @@ App.publish = sumeru.controller.create(function(env, session) {
 		var url = Library.base.getUrl("PublishNew",postData);
 		console.log(url);
 		sumeru.external.get(url, sendSuccess);
-		// returnlast();
 	}
 
 	var returnlast = function() {
@@ -39,7 +38,8 @@ App.publish = sumeru.controller.create(function(env, session) {
 	}
 	var sendSuccess=function(data){
 		console.log(data);
-		returnlast();
+		// returnlast();
+		alert("发布成功");
 	}
 
 });

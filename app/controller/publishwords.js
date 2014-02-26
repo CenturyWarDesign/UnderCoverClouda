@@ -62,7 +62,7 @@ App.publishwords = sumeru.controller.create(function(env, session) {
 	var sendSuccess = function(data) {
 		console.log(data);
 		alert("发布成功");
-		returnlast();
+		// returnlast();
 	}
 
 

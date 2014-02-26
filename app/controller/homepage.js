@@ -12,6 +12,7 @@ sumeru.router.setDefault('App.homepage');
 
 App.homepage = sumeru.controller.create(function(env, session){
 
+	var message="";
 	env.onrender = function(doRender){
 		doRender("homepage", ['none','z']);
 		// initConfig();
@@ -27,8 +28,32 @@ App.homepage = sumeru.controller.create(function(env, session){
 		document.getElementById('internet_publish').addEventListener('click', internet_publish);
         document.getElementById('turnbottlebtn').addEventListener('click',turnbottle);
         document.getElementById('internet_words').addEventListener('click',internet_words);
+        document.getElementById('mail').addEventListener('click',readmessage);
 		// $("#talk_turn").html(Math.floor(Math.random()*10+1))
+		getUserInfo();
 	}	
+
+	//取得玩家未读消息条数
+	var getUserInfo =function(){
+		var url = Library.base.getUrl("UserGetInfo");
+		sumeru.external.get(url, sendSuccess);
+	}
+
+	var sendSuccess = function(data) {
+		var stu = eval('(' + data + ')');
+		var temdata = eval('(' + stu.data + ')');
+		var mail=temdata.mail;
+		if(mail!=null){
+			message=mail[0].content;
+			$("#badge").html("1");
+		}
+		console.log(temdata);
+	}
+
+	var readmessage=function(){
+		alert(message);
+		$("#badge").html("");
+	}
 
 	var undercover=function(){
 		// env.close();
