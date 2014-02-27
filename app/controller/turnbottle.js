@@ -23,39 +23,34 @@ App.turnbottle = sumeru.controller.create(function(env,session){
   var ctx = CanvasRenderingContext2D;
   var pointx = 0;//ctx坐标
   var pointy = 0;//ctx坐标
-  var alltime = 10;//转动总时间
+  var alltime = 5000;//转动总时间
+  var angle = 0;//当前转动角度
+  var timespan = 50;
   var currenttime = 0;
 	env.onready= function(){
-       
-        //var ctx=document.getElementById('myCanvas').getContext('2d');
-        //ctx.translate(25,25);
-        //var img = document.getElementById('bottleImg');
-  	    //ctx.drawImage(img,25,25);
-  	    img = document.getElementById('bottleImg');
+
+  	    //img = document.getElementById('bottleImg');
+        img = new Image();
+        img.src = '/asset/img/icon_kill.png';
         img.onload = function()
         {
             imgheight = img.height;
             imgwidth = img.width;
-            console.log(imgheight);
-            console.log(imgwidth);
+
+            canvasheight = canvas.height;
+            canvaswidth = canvas.width;
+
+            pointx = canvaswidth/2 ;
+            pointy = canvasheight/2 ;
+
+            ctx.translate(pointx,pointy);
+            ctx.drawImage(img,-imgwidth/2,-imgheight/2);
         }
         
         var canvas=document.getElementById('myCanvas');
         ctx = canvas.getContext('2d');
         ctx.globalCompositeOperation = 'destination-over';
-        ctx.clearRect(0,0,canvaswidth,canvasheight); // clear canvas
-        //ctx.onload = function()
-        //{
-        canvasheight = canvas.height;
-        canvaswidth = canvas.width;
-
-        console.log(canvasheight);
-        console.log(canvaswidth);
-        //}
-
-        pointx = canvaswidth/2 ;
-        pointy = canvasheight/2 ;
-        ctx.translate(pointx,pointy);
+        ctx.clearRect(0,0,canvaswidth,canvasheight); 
 
         document.getElementById('roatebtn').addEventListener('click',move);
 	     
@@ -63,23 +58,29 @@ App.turnbottle = sumeru.controller.create(function(env,session){
 
 	var move =function()
 		{
-			var interval = setInterval(draw,100);
+      currenttime = 0;
+			var interval = setInterval(draw,timespan);
       setTimeout(function(){
          console.log("interval");
          clearInterval(interval);
-      } ,5000);
+      } ,alltime);
 		}
 
 	var draw = function()
 	{
-		  //var ctx=document.getElementById('myCanvas').getContext('2d');
-
 		  ctx.globalCompositeOperation = 'destination-over';
-  		ctx.clearRect(-pointx,-pointy,canvaswidth,canvasheight); // clear canvas
-      console.log(canvaswidth);
-      console.log(canvasheight);
-      currenttime = currenttime + 100;
-  		var angle = alltime*currenttime - currenttime * currenttime ;
+  		ctx.clearRect(-pointx,-pointy,canvaswidth,canvasheight); 
+      
+  		var count = alltime/timespan/2;
+      currenttime += timespan;
+      if(angle < count)
+      {
+           angle += 1;
+      }
+      else
+      {
+           angle -= 1;
+      }
 
   		ctx.rotate(angle*Math.PI/180);
   	  ctx.drawImage(img,-imgwidth/2,-imgheight/2);
