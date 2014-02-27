@@ -25,7 +25,15 @@ App.guess = sumeru.controller.create(function(env, session){
 	//添加随机发言功能
 	var indexcount;
 	var speakturn=[];
+	var speakCon;
 	var wordtype="所有";
+	var options = {  
+            "placement" : "top", // 在链接下方显示tooltip  
+            "trigger" : "focus",    // 显示方式  
+            "title" : "请发言",        // tooltip中内容  
+            "html" : "true"   // 如果为true，title可以为html代码  
+        } ; 
+
 
 	env.onready=function(){
 		initGuess();
@@ -33,9 +41,26 @@ App.guess = sumeru.controller.create(function(env, session){
 		document.getElementById('setting_game').addEventListener('click', underwordsetting);
 		document.getElementById('punish').addEventListener('click', punish);
 		$("#alter_guess").hide();
-		//增加随机发言功能
-		$("#talk_turn").html("从第"+speakturn[Math.floor(Math.random()*indexcount+1)]+"位开始发言")
+        talktooltip(0);//发言提示
+		$("#talk_turn").html("从第"+speakCon+"位开始发言")
 	}	
+
+    var talktooltip=function(flag){
+     	speakCon = speakturn[Math.floor(Math.random()*indexcount+1)];
+		//增加随机发言功能
+        $("#under_"+speakCon).tooltip(options);
+        if (flag==0) {
+        	$("#under_"+speakCon).tooltip('show');
+        }
+        else
+        {
+        	for(var i=1;i<=parseInt(session.get("fathercount"));i++){
+        		$("#under_"+i).tooltip('hide');
+
+        	}
+        }
+
+    }
 
 	var restart=function(){
 		// env.close();
@@ -63,7 +88,7 @@ App.guess = sumeru.controller.create(function(env, session){
 			{
 				$("#guesscontent").append('<br/>');
 			}
-			 var temhtml="<button id='under_"+i+"'  type='button'class='btn btn-default' style='width:31%;margin:1%;padding:15px' onclick=''>"+i+"</button>"
+			 var temhtml="<a><button id='under_"+i+"'  type='button' class='btn btn-default' style='width:31%;margin:1%;padding:15px' onclick=''>"+i+"</button></a>"
 			$("#guesscontent").append(temhtml);
 			document.getElementById('under_'+i).addEventListener('click', tapindex);
 		};
@@ -101,30 +126,36 @@ App.guess = sumeru.controller.create(function(env, session){
 			peoplecount--;
 			// $("#under_"+index).html("冤死"+wordstring[index-1]);
 			$("#under_"+index).html("出局");
+			 talktooltip(0);//发言提示显示
 			//添加随机发言功能
-			$("#talk_turn").html("从第"+speakturn[Math.floor(Math.random()*indexcount+1)]+"位开始发言")
+			$("#talk_turn").html("从第"+speakCon+"位开始发言");
+						
 		}else{
 			soncount--;
 			// $("#under_"+index).html("卧底"+wordstring[index-1]);
 			$("#under_"+index).html("出局");
+			 talktooltip(0);//发言提示显示
 			//添加随机发言功能
-			$("#talk_turn").html("从第"+speakturn[Math.floor(Math.random()*indexcount+1)]+"位开始发言")
+			$("#talk_turn").html("从第"+speakCon+"位开始发言");
+
 		}
-
-
+        
+        console.log("隐藏");
 		console.log(peoplecount+":peoplecount");
 		console.log(soncount+":soncount");
-
+        //$(".btn").tooltip("destroy");
 		if(peoplecount<=soncount){
 			$("#alter_guess").html("卧底胜利");
 			$("#alter_guess").show();
 			disableallbutton();
+		    talktooltip(1);//发言提示隐藏
 			$("#talk_turn").hide();
 		}
 		else if(soncount<=0){
 			$("#alter_guess").html("卧底失败");
 			$("#alter_guess").show();
 			disableallbutton();
+			 talktooltip(1);//发言提示隐藏
 			$("#talk_turn").hide();
 		}
 
