@@ -51,6 +51,11 @@ App.homepage = sumeru.controller.create(function(env, session){
 	}
 
 	var readmessage=function(){
+		if(message=="")
+		{
+			alert("没有未读消息");
+			return;
+		}
 		alert(message);
 		$("#badge").html("");
 	}
